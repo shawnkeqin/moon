@@ -9,7 +9,14 @@ import {
   FundOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
-import icon from "../images/cryptocurrency.png";
+import icon from "../images/fundness.png";
+
+const titleStyle = {
+  marginTop: '15px',
+  marginRight: '30px',
+  color: '#000000'
+}
+
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -37,9 +44,11 @@ const Navbar = () => {
     <div className="nav-container">
       <div className="logo-container">
         <Avatar src={icon} size="large" />
+        <div style={titleStyle}>
         <Typography.Title level={2} className="logo">
-          <Link to="/">Cryptoworld</Link>
+          <Link to="/">FUNDNESS</Link>
         </Typography.Title>
+        </div>
         <Button
           className="menu-control-container"
           onClick={() => setActiveMenu(true)}
@@ -48,7 +57,7 @@ const Navbar = () => {
         </Button>
       </div>
       {activeMenu && (
-        <Menu theme="dark">
+        <Menu theme="light">
           <Menu.Item icon={<HomeOutlined />}>
             <Link to="/">Home</Link>
           </Menu.Item>
@@ -62,7 +71,7 @@ const Navbar = () => {
             <Link to="/news">News</Link>
           </Menu.Item>
           <Menu.Item icon={<StockOutlined />}>
-            <Link to="/stocks">Stocks</Link>
+            <Link to="/stocks">WSB Stocks</Link>
           </Menu.Item>
         </Menu>
       )}
