@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Menu, Typography, Avatar } from "antd";
+import { Button, Menu, Typography, Avatar, Image } from "antd";
 import { Link } from "react-router-dom";
 import {
   HomeOutlined,
@@ -9,14 +9,13 @@ import {
   FundOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
-import icon from "../images/fundness.png";
+import icon from "../images/fundness_2.png";
 
 const titleStyle = {
-  marginTop: '15px',
-  marginRight: '30px',
-  color: '#000000'
-}
-
+  marginTop: "15px",
+  marginRight: "30px",
+  color: "#000000",
+};
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -43,11 +42,11 @@ const Navbar = () => {
   return (
     <div className="nav-container">
       <div className="logo-container">
-        <Avatar src={icon} size="large" />
         <div style={titleStyle}>
-        <Typography.Title level={2} className="logo">
-          <Link to="/">FUNDNESS</Link>
-        </Typography.Title>
+          <Link to="/">
+            {/* <Avatar src={icon} size="large" /> */}
+            <Image src={icon} />
+          </Link>
         </div>
         <Button
           className="menu-control-container"
