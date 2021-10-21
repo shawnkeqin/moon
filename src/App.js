@@ -9,6 +9,7 @@ import {
   News,
   Homepage,
   Stocks,
+  Options,
 } from "./components";
 import "./App.css";
 
@@ -40,15 +41,15 @@ const App = () => {
               <Route exact path="/stocks">
                 <Stocks />
               </Route>
+              <Route exact path="/options">
+                <Options />
+              </Route>
             </Switch>
           </div>
         </Layout>
 
         <div className="footer">
-          <Typography.Title
-            level={5}
-            style={{ textAlign: "center" }}
-          >
+          <Typography.Title level={5} style={{ textAlign: "center" }}>
             FUNDNESS
             <br />
             All rights reserved

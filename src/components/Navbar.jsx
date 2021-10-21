@@ -8,6 +8,7 @@ import {
   StockOutlined,
   FundOutlined,
   MenuOutlined,
+  FileDoneOutlined,
 } from "@ant-design/icons";
 import icon from "../images/fundness_2.png";
 
@@ -71,6 +72,9 @@ const Navbar = () => {
           </Menu.Item>
           <Menu.Item icon={<StockOutlined />}>
             <Link to="/stocks">WSB Stocks</Link>
+          </Menu.Item>
+          <Menu.Item icon={<FileDoneOutlined />}>
+            <Link to="/options">Options</Link>
           </Menu.Item>
         </Menu>
       )}
