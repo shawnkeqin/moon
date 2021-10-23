@@ -6,4 +6,4 @@ export { default as Exchanges } from "./Exchanges";
 export { default as Homepage } from "./Homepage";
 export { default as Stocks } from "./Stocks";
 export { default as Options } from "./Options";
-export { default as Analysis } from "./Analysis";
+export { default as Insiders } from "./Insiders";

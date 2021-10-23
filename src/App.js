@@ -10,7 +10,7 @@ import {
   Homepage,
   Stocks,
   Options,
-  Analysis,
+  Insiders,
 } from "./components";
 import "./App.css";
 
@@ -45,8 +45,8 @@ const App = () => {
               <Route exact path="/options">
                 <Options />
               </Route>
-              <Route exact path="/analysis">
-                <Analysis />
+              <Route exact path="/insiders">
+                <Insiders />
               </Route>
             </Switch>
           </div>
@@ -54,7 +54,7 @@ const App = () => {
 
         <div className="footer">
           <Typography.Title level={5} style={{ textAlign: "center" }}>
-            FUNDNESS
+            MOON
             <br />
             All rights reserved
           </Typography.Title>

@@ -10,7 +10,7 @@ import {
   MenuOutlined,
   FileDoneOutlined,
 } from "@ant-design/icons";
-import icon from "../images/fundness_2.png";
+import icon from "../images/moon.png";
 
 const titleStyle = {
   marginTop: "15px",
@@ -64,20 +64,20 @@ const Navbar = () => {
           <Menu.Item icon={<FundOutlined />}>
             <Link to="/cryptocurrencies">Cryptocurrencies</Link>
           </Menu.Item>
-          <Menu.Item icon={<MoneyCollectOutlined />}>
+          {/* <Menu.Item icon={<MoneyCollectOutlined />}>
             <Link to="/exchanges">Exchanges</Link>
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item icon={<BulbOutlined />}>
             <Link to="/news">News</Link>
           </Menu.Item>
           <Menu.Item icon={<StockOutlined />}>
             <Link to="/stocks">WSB Stocks</Link>
           </Menu.Item>
-          <Menu.Item icon={<FileDoneOutlined />}>
+          {/* <Menu.Item icon={<FileDoneOutlined />}>
             <Link to="/options">Options</Link>
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item icon={<FileDoneOutlined />}>
-            <Link to="/analysis">Analysis</Link>
+            <Link to="/insiders">Insiders</Link>
           </Menu.Item>
         </Menu>
       )}

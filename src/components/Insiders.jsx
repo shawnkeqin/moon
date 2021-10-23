@@ -4,7 +4,7 @@ import { Table, Typography, Input } from "antd";
 import Loader from "./Loader";
 const { Title, Text } = Typography;
 const { Search } = Input;
-const Analysis = () => {
+const Insiders = () => {
   const [insiders, setInsider] = useState([]);
   const [insiderTrxs, setInsiderTrxs] = useState([]);
   const [titles, setTitle] = useState([]);
@@ -74,4 +74,4 @@ const Analysis = () => {
   );
 };
 
-export default Analysis;
+export default Insiders;
