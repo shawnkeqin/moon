@@ -2,6 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { cryptoApi } from "../services/cryptoApi";
 import { cryptoNewsApi } from "../services/cryptoNewsApi";
 import { stocksApi } from "../services/stockApi";
+import { insiderApi } from "../services/insiderApi";
 const initialCounterState = { counter: 0, showCounter: true };
 
 const counterSlice = createSlice({
@@ -28,6 +29,8 @@ export default configureStore({
     [cryptoApi.reducerPath]: cryptoApi.reducer,
     [cryptoNewsApi.reducerPath]: cryptoNewsApi.reducer,
     [stocksApi.reducerPath]: stocksApi.reducer,
+    [insiderApi.reducerPath]: insiderApi.reducer,
+
     counter: counterSlice.reducer,
   },
 });

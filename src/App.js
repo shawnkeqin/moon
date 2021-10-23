@@ -10,6 +10,7 @@ import {
   Homepage,
   Stocks,
   Options,
+  Analysis,
 } from "./components";
 import "./App.css";
 
@@ -43,6 +44,9 @@ const App = () => {
               </Route>
               <Route exact path="/options">
                 <Options />
+              </Route>
+              <Route exact path="/analysis">
+                <Analysis />
               </Route>
             </Switch>
           </div>

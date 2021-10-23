@@ -76,6 +76,9 @@ const Navbar = () => {
           <Menu.Item icon={<FileDoneOutlined />}>
             <Link to="/options">Options</Link>
           </Menu.Item>
+          <Menu.Item icon={<FileDoneOutlined />}>
+            <Link to="/analysis">Analysis</Link>
+          </Menu.Item>
         </Menu>
       )}
     </div>
