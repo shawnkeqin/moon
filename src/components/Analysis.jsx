@@ -40,6 +40,7 @@ const Analysis = () => {
       setInsider((oldArray) => [...oldArray, val.name]);
       setTitle((oldArray) => [...oldArray, val.relation]);
     });
+
     setInsiderTrxs([]);
     data?.insiderTransactions.transactions.map((trx) => {
       let obj = {};
