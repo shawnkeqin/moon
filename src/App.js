@@ -11,7 +11,8 @@ import {
   Stocks,
   Options,
   Insiders,
-  Sentiment
+  Sentiment,
+  RecommendationTrends,
 } from "./components";
 import "./App.css";
 
@@ -51,6 +52,9 @@ const App = () => {
               </Route>
               <Route exact path="/sentiment">
                 <Sentiment />
+              </Route>
+              <Route exact path="/recommendation-trends">
+                <RecommendationTrends />
               </Route>
             </Switch>
           </div>

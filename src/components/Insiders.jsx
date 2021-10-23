@@ -61,7 +61,7 @@ const Insiders = () => {
   return (
     <>
       <Search
-        placeholder="input search text"
+        placeholder="Search Stock"
         allowClear
         enterButton="Search"
         size="large"

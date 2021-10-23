@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Menu, Typography, Avatar, Image,Modal} from "antd";
+import { Button, Menu, Typography, Avatar, Image, Modal } from "antd";
 import { Link } from "react-router-dom";
 import {
   HomeOutlined,
@@ -10,6 +10,7 @@ import {
   FundOutlined,
   MenuOutlined,
   FileDoneOutlined,
+  EyeOutlined,
 } from "@ant-design/icons";
 import icon from "../images/moon.png";
 
@@ -21,7 +22,7 @@ const titleStyle = {
 
 const buttonStyle = {
   marginLeft: "10px",
-}
+};
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -98,13 +99,28 @@ const Navbar = () => {
             <Link to="/insiders">Insiders</Link>
           </Menu.Item>
           <Menu.Item icon={<RadarChartOutlined />}>
-      
             <Link to="/sentiment">Sentiment</Link>
-            <Button style={buttonStyle}type="primary" onClick={showModal}>
-        Premuim
-      </Button>
-            <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-          </Modal>
+            <Button style={buttonStyle} type="primary" onClick={showModal}>
+              Premuim
+            </Button>
+            <Modal
+              title="Basic Modal"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            ></Modal>
+          </Menu.Item>
+          <Menu.Item icon={<EyeOutlined />}>
+            <Link to="/recommendation-trends">Recommendations</Link>
+            <Button style={buttonStyle} type="primary" onClick={showModal}>
+              Premuim
+            </Button>
+            <Modal
+              title="Basic Modal"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            ></Modal>
           </Menu.Item>
         </Menu>
       )}

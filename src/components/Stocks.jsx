@@ -3,6 +3,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { counterActions } from "../app/store";
 import { Col, Row, Typography, Select, Card, Input } from "antd";
+import { RiseOutlined, FallOutlined } from "@ant-design/icons";
 import Loader from "./Loader";
 
 const { Search } = Input;
@@ -13,48 +14,42 @@ const cardsStyle = {
   marginTop: "15px",
 };
 
-
 const Stocks = () => {
-
   const [wsbStocks, setWsbStocks] = useState([]);
   const [sentiment, setSentiment] = useState(undefined);
-
-
-  
 
   const onSearch = (value) => {
     setSentiment(value);
   };
 
- 
   // const counter = useSelector((state) => state.counter.counter);
   // const show = useSelector((state) => state.counter.showCounter);
 
   useEffect(() => {
-
     async function fetchData() {
       try {
-        const stocksData = await axios.get("https://dashboard.nbshare.io/api/v1/apps/reddit");
+        const stocksData = await axios.get(
+          "https://dashboard.nbshare.io/api/v1/apps/reddit"
+        );
         setWsbStocks(stocksData);
       } catch (error) {
         console.log(error);
       }
     }
 
-   
     fetchData();
     const filterMinSentiment = wsbStocks?.data?.filter(
       (stockData) => stockData.sentiment_score >= sentiment
     );
-   
-    console.log(filterMinSentiment);
-  
-    setWsbStocks(filterMinSentiment);
-  
 
-  
+    console.log(filterMinSentiment);
+
+    setWsbStocks(filterMinSentiment);
+
     // setWsbStocks(filterMinVotes);
   }, [sentiment]);
+
+  if (!wsbStocks) return <Loader />;
   // if (isFetching) return <Loader />;
 
   // if (isFetching) return <Loader />;
@@ -77,15 +72,13 @@ const Stocks = () => {
     <>
       <Title>Trending r/wallstreetbets Stocks</Title>
       <div className="grid-container">
-
         <Search
-        placeholder="Search Sentiment Score"
-        allowClear
-        enterButton="Search"
-        size="medium"
-        onSearch={onSearch}
-      />
- 
+          placeholder="Search Sentiment Score"
+          allowClear
+          enterButton="Search"
+          size="medium"
+          onSearch={onSearch}
+        />
       </div>
       <div style={cardsStyle}>
         <Row gutter={[32, 32]} className="crypto-card-container">
@@ -102,12 +95,16 @@ const Stocks = () => {
                 extra={
                   <Typography>
                     Sentiment: {stockData.sentiment}
+                    {stockData.sentiment === "Bullish" ? (
+                      <RiseOutlined />
+                    ) : (
+                      <FallOutlined />
+                    )}
                   </Typography>
                 }
               >
                 <p>Sentiment Score: {stockData.sentiment_score}</p>
                 <p>No. of comments: {stockData.no_of_comments}</p>
-      
               </Card>
             </Col>
           ))}
