@@ -7,3 +7,4 @@ export { default as Homepage } from "./Homepage";
 export { default as Stocks } from "./Stocks";
 export { default as Options } from "./Options";
 export { default as Insiders } from "./Insiders";
+export {default as Sentiment} from "./Sentiment";

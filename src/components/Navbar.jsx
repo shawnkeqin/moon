@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Button, Menu, Typography, Avatar, Image } from "antd";
+import { Button, Menu, Typography, Avatar, Image,Modal} from "antd";
 import { Link } from "react-router-dom";
 import {
   HomeOutlined,
   MoneyCollectOutlined,
+  RadarChartOutlined,
   BulbOutlined,
   StockOutlined,
   FundOutlined,
@@ -18,9 +19,26 @@ const titleStyle = {
   color: "#000000",
 };
 
+const buttonStyle = {
+  marginLeft: "10px",
+}
+
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -78,6 +96,15 @@ const Navbar = () => {
           </Menu.Item> */}
           <Menu.Item icon={<FileDoneOutlined />}>
             <Link to="/insiders">Insiders</Link>
+          </Menu.Item>
+          <Menu.Item icon={<RadarChartOutlined />}>
+      
+            <Link to="/sentiment">Sentiment</Link>
+            <Button style={buttonStyle}type="primary" onClick={showModal}>
+        Premuim
+      </Button>
+            <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+          </Modal>
           </Menu.Item>
         </Menu>
       )}

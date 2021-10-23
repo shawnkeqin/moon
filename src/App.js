@@ -11,6 +11,7 @@ import {
   Stocks,
   Options,
   Insiders,
+  Sentiment
 } from "./components";
 import "./App.css";
 
@@ -48,13 +49,16 @@ const App = () => {
               <Route exact path="/insiders">
                 <Insiders />
               </Route>
+              <Route exact path="/sentiment">
+                <Sentiment />
+              </Route>
             </Switch>
           </div>
         </Layout>
 
         <div className="footer">
           <Typography.Title level={5} style={{ textAlign: "center" }}>
-            MOON
+            moon
             <br />
             All rights reserved
           </Typography.Title>
