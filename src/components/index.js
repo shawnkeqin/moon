@@ -9,3 +9,4 @@ export { default as Options } from "./Options";
 export { default as Insiders } from "./Insiders";
 export { default as Sentiment } from "./Sentiment";
 export { default as RecommendationTrends } from "./RecommendationTrends";
+export { default as Schedule } from "./Schedule";

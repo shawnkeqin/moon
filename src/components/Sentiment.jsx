@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Radar, PolarArea } from "react-chartjs-2";
 import { Typography, Input, Timeline, List, Card, Avatar } from "antd";
 import { useGetSentimentQuery } from "../services/sentimentApi";
 import twitter from "../images/twitter.png";
@@ -20,6 +21,104 @@ const Sentiment = () => {
     setStock(value);
   };
 
+  let arr = [0, 0, 0, 0, 0, 0, 0];
+  let arr2 = [0, 0, 0, 0, 0, 0, 0];
+  let arr3 = [0, 0, 0, 0, 0];
+  socialSentiment?.data?.reddit.map((val) => {
+    arr[0] += val.score;
+    arr[1] += val.positiveMention;
+    arr[2] += val.negativeMention;
+    arr[3] += val.positiveScore;
+    arr[4] += val.negativeScore;
+    arr[5] += val.avg_7_days;
+    arr[6] += val.mention;
+  });
+
+  socialSentiment?.data?.twitter.map((val) => {
+    arr2[0] += val.score;
+    arr2[1] += val.positiveMention;
+    arr2[2] += val.negativeMention;
+    arr2[3] += val.positiveScore;
+    arr2[4] += val.negativeScore;
+    arr2[5] += val.avg_7_days;
+    arr2[6] += val.mention;
+  });
+
+  sentiment?.map((val) => {
+    arr3[0] += val.score;
+    arr3[1] += val.positive_score;
+    arr3[2] += val.negative_score;
+    arr3[3] += val.avg_7_days;
+    arr3[4] += val.activity;
+  });
+
+  const options = {
+    elements: {
+      line: {
+        borderWidth: 3,
+      },
+    },
+  };
+
+  const dataTwo = {
+    labels: [
+      "Sentiment Score",
+      "Positive Score",
+      "Negative Score",
+      "Average 7 Days",
+      "Activity",
+    ],
+    datasets: [
+      {
+        label: "Social Media Sentiment",
+        data: arr3,
+        backgroundColor: [
+          "rgb(255, 99, 132)",
+          "rgb(75, 192, 192)",
+          "rgb(255, 205, 86)",
+          "rgb(201, 203, 207)",
+          "rgb(54, 162, 235)",
+        ],
+      },
+    ],
+  };
+
+  const dataOne = {
+    labels: [
+      "Sentiment Score",
+      "Positive Mention",
+      "Negative Mention",
+      "Positive Score",
+      "Negative Score ",
+      "Average 7 Days",
+      "Mentions",
+    ],
+    datasets: [
+      {
+        label: "Reddit Sentiment",
+        data: arr,
+        fill: true,
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        borderColor: "rgb(255, 99, 132)",
+        pointBackgroundColor: "rgb(255, 99, 132)",
+        pointBorderColor: "#fff",
+        pointHoverBackgroundColor: "#fff",
+        pointHoverBorderColor: "rgb(255, 99, 132)",
+      },
+      {
+        label: "Twitter Sentiment",
+        data: arr2,
+        fill: true,
+        backgroundColor: "rgba(54, 162, 235, 0.2)",
+        borderColor: "rgb(54, 162, 235)",
+        pointBackgroundColor: "rgb(54, 162, 235)",
+        pointBorderColor: "#fff",
+        pointHoverBackgroundColor: "#fff",
+        pointHoverBorderColor: "rgb(54, 162, 235)",
+      },
+    ],
+  };
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -34,7 +133,7 @@ const Sentiment = () => {
 
     fetchData();
     console.log(socialSentiment?.data?.reddit);
-  }, []);
+  }, [stock]);
 
   if (isFetching) return <Loader />;
 
@@ -50,7 +149,8 @@ const Sentiment = () => {
         />
         <div style={timeLineStyle}>
           <Title>Social Media Sentiment for: {stock} </Title>
-          <List
+          <PolarArea data={dataTwo} />
+          {/* <List
             grid={{ gutter: 16, column: 4 }}
             dataSource={sentiment}
             renderItem={(item) => (
@@ -64,12 +164,15 @@ const Sentiment = () => {
                 </Card>
               </List.Item>
             )}
-          />
+          /> */}
         </div>
         <Title>
-          <Avatar src={reddit} size="large" /> Reddit Sentiment for:{stock}
+          <Avatar src={reddit} size="large" /> Reddit Sentiment and
+          <Avatar src={twitter} size="large" /> Twitter Sentiment for: {stock}
         </Title>
-        {
+
+        <Radar data={dataOne} options={options} />
+        {/* {
           <List
             grid={{ gutter: 16, column: 4 }}
             dataSource={socialSentiment?.data?.reddit}
@@ -109,7 +212,7 @@ const Sentiment = () => {
               </List.Item>
             )}
           />
-        }
+        } */}
       </div>
     </>
   );

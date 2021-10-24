@@ -3,7 +3,7 @@ import { Button, Menu, Typography, Avatar, Image, Modal } from "antd";
 import { Link } from "react-router-dom";
 import {
   HomeOutlined,
-  MoneyCollectOutlined,
+  CalendarOutlined,
   RadarChartOutlined,
   BulbOutlined,
   StockOutlined,
@@ -112,6 +112,18 @@ const Navbar = () => {
           </Menu.Item>
           <Menu.Item icon={<EyeOutlined />}>
             <Link to="/recommendation-trends">Recommendations</Link>
+            <Button style={buttonStyle} type="primary" onClick={showModal}>
+              Premuim
+            </Button>
+            <Modal
+              title="Basic Modal"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            ></Modal>
+          </Menu.Item>
+          <Menu.Item icon={<CalendarOutlined />}>
+            <Link to="/schedule">Schedule</Link>
             <Button style={buttonStyle} type="primary" onClick={showModal}>
               Premuim
             </Button>

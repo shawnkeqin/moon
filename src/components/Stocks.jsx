@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+
 import { counterActions } from "../app/store";
-import { Col, Row, Typography, Select, Card, Input } from "antd";
+import { Col, Row, Typography, Card, Input } from "antd";
 import { RiseOutlined, FallOutlined } from "@ant-design/icons";
 import Loader from "./Loader";
 
 const { Search } = Input;
-const { Title, Text } = Typography;
-const { Option } = Select;
+const { Title } = Typography;
 
 const cardsStyle = {
   marginTop: "15px",
@@ -16,7 +15,7 @@ const cardsStyle = {
 
 const Stocks = () => {
   const [wsbStocks, setWsbStocks] = useState([]);
-  const [sentiment, setSentiment] = useState(undefined);
+  const [sentiment, setSentiment] = useState("");
 
   const onSearch = (value) => {
     setSentiment(value);

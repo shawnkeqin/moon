@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useGetInsidersQuery } from "../services/insiderApi";
 import { Table, Typography, Input } from "antd";
 import Loader from "./Loader";
-const { Title, Text } = Typography;
+const { Title } = Typography;
 const { Search } = Input;
 const Insiders = () => {
   const [insiders, setInsider] = useState([]);

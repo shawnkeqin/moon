@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
+import { HeartTwoTone } from "@ant-design/icons";
 import { Layout, Typography, Space } from "antd";
 import {
   Navbar,
@@ -13,6 +14,7 @@ import {
   Insiders,
   Sentiment,
   RecommendationTrends,
+  Schedule,
 } from "./components";
 import "./App.css";
 
@@ -56,19 +58,25 @@ const App = () => {
               <Route exact path="/recommendation-trends">
                 <RecommendationTrends />
               </Route>
+              <Route exact path="/schedule">
+                <Schedule />
+              </Route>
             </Switch>
           </div>
         </Layout>
 
         <div className="footer">
           <Typography.Title level={5} style={{ textAlign: "center" }}>
+            <HeartTwoTone />
             moon
             <br />
             All rights reserved
           </Typography.Title>
           <Space>
             <Link to="/">Home</Link>
-            <Link to="/exchanges">Exchanges</Link>
+            <Link to="/cryptocurrencies">Cryptocurrencies</Link>
+            <Link to="/stocks">Stocks</Link>
+            <Link to="/insiders">Insiders</Link>
             <Link to="/news">News</Link>
           </Space>
         </div>
