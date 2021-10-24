@@ -60,6 +60,7 @@ const Insiders = () => {
 
   return (
     <>
+      <Title>Insider Transactions</Title>
       <Search
         placeholder="Search Stock"
         allowClear
@@ -67,7 +68,6 @@ const Insiders = () => {
         size="large"
         onSearch={onSearch}
       />
-      <Title>Insider Transactions</Title>
       <Typography>Stock: {ticker}</Typography>
       <Table dataSource={insiderTrxs} columns={columns} />;
     </>

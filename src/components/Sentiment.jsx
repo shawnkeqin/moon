@@ -139,6 +139,7 @@ const Sentiment = () => {
 
   return (
     <>
+      <Title>Social Media Sentiment for: {stock} </Title>
       <div>
         <Search
           placeholder="Search Stock"
@@ -148,7 +149,6 @@ const Sentiment = () => {
           onSearch={onSearch}
         />
         <div style={timeLineStyle}>
-          <Title>Social Media Sentiment for: {stock} </Title>
           <PolarArea data={dataTwo} />
           {/* <List
             grid={{ gutter: 16, column: 4 }}

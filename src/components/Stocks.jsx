@@ -2,10 +2,20 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useGetStocksQuery } from "../services/stockApi";
 import { counterActions } from "../app/store";
-import { Col, Row, Typography, Card, Input } from "antd";
+import {
+  Col,
+  Row,
+  Typography,
+  Card,
+  Input,
+  Menu,
+  Dropdown,
+  Button,
+  Avatar,
+} from "antd";
 import { RiseOutlined, FallOutlined } from "@ant-design/icons";
 import Loader from "./Loader";
-
+import icon from "../images/wsb.png";
 const { Search } = Input;
 const { Title } = Typography;
 
@@ -16,11 +26,19 @@ const cardsStyle = {
 const Stocks = () => {
   const [wsbStocks, setWsbStocks] = useState(undefined);
   const [sentiment, setSentiment] = useState("");
+  // const [bullOrBear, setBullOrBear] = useState("");
   const { data: stocksData, isFetching } = useGetStocksQuery();
   console.log(stocksData);
   const onSearch = (value) => {
     setSentiment(value);
   };
+
+  // const menu = (
+  //   <Menu>
+  //     <Menu.Item onClick={setBullOrBear("Bullish")}>Bullish</Menu.Item>
+  //     <Menu.Item onClick={setBullOrBear("Bearish")}>Bearish</Menu.Item>
+  //   </Menu>
+  // );
 
   useEffect(() => {
     setWsbStocks([]);
@@ -28,12 +46,12 @@ const Stocks = () => {
       (stockData) => stockData.sentiment_score >= sentiment
     );
 
-    console.log(wsbStocks);
-    console.log(filterMinSentiment);
+    // const filterBullishOrBearish = stocksData?.filter(
+    //   (stockData) => stockData.sentiment === bullOrBear
+    // );
 
+    // setWsbStocks(filterBullishOrBearish);
     setWsbStocks(filterMinSentiment);
-
-    // setWsbStocks(filterMinSentiment);
   }, [stocksData, sentiment]);
 
   if (isFetching) return <Loader />;
@@ -57,7 +75,10 @@ const Stocks = () => {
   // };
   return (
     <>
-      <Title>Trending r/wallstreetbets Stocks</Title>
+      <Title>
+        <Avatar src={icon} size="large" />
+        Trending r/wallstreetbets Stocks
+      </Title>
       <div className="grid-container">
         <Search
           placeholder="Search Sentiment Score"
@@ -67,6 +88,9 @@ const Stocks = () => {
           onSearch={onSearch}
         />
       </div>
+      {/* <Dropdown overlay={menu} placement="bottomLeft" arrow>
+        <Button>Filter Sentiment</Button>
+      </Dropdown> */}
       <div style={cardsStyle}>
         <Row gutter={[32, 32]} className="crypto-card-container">
           {wsbStocks?.map((stockData) => (

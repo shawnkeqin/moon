@@ -11,6 +11,7 @@ import {
   MenuOutlined,
   FileDoneOutlined,
   EyeOutlined,
+  DollarOutlined,
 } from "@ant-design/icons";
 import icon from "../images/moon.png";
 
@@ -80,7 +81,7 @@ const Navbar = () => {
           <Menu.Item icon={<HomeOutlined />}>
             <Link to="/">Home</Link>
           </Menu.Item>
-          <Menu.Item icon={<FundOutlined />}>
+          <Menu.Item icon={<DollarOutlined />}>
             <Link to="/cryptocurrencies">Cryptocurrencies</Link>
           </Menu.Item>
           {/* <Menu.Item icon={<MoneyCollectOutlined />}>

@@ -65,6 +65,10 @@ const RecommendationTrends = () => {
 
   return (
     <>
+      <Title>Recommendation Trends for: {stock}</Title>
+      <Typography>
+        Get latest analyst recommendation trends for a company.
+      </Typography>
       <Search
         placeholder="Search Stock"
         allowClear
@@ -73,10 +77,6 @@ const RecommendationTrends = () => {
         onSearch={onSearch}
       />
       <div>
-        <Title>Recommendation Trends for: {stock}</Title>
-        <Typography>
-          Get latest analyst recommendation trends for a company.
-        </Typography>
         <Bar
           data={data}
           width={50}

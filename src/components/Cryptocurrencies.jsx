@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import millify from "millify";
 import { Link } from "react-router-dom";
-import { Card, Row, Col, Input } from "antd";
-import Loader from './Loader';
+import { Card, Row, Col, Input, Typography } from "antd";
+import Loader from "./Loader";
 import { useGetCryptosQuery } from "../services/cryptoApi";
+const { Title } = Typography;
 
+const searchBarStyle = {
+  marginBottom: "20px",
+};
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 100;
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
@@ -22,8 +26,11 @@ const Cryptocurrencies = ({ simplified }) => {
   if (isFetching) return <Loader />;
   return (
     <>
+      <div>
+        <Title>Cryptocurrencies</Title>
+      </div>
       {!simplified && (
-        <div className="search-crypto">
+        <div style={searchBarStyle}>
           <Input
             placeholder="Search Cyptocurrency"
             onChange={(e) => setSearchTerm(e.target.value)}
