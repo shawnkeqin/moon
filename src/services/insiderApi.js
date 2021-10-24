@@ -10,7 +10,7 @@ const baseUrl = "https://yh-finance.p.rapidapi.com";
 const createRequest = (url) => ({ url, headers: insiderApiHeaders });
 
 export const insiderApi = createApi({
-  reducerPath: "stocks",
+  reducerPath: "insider",
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getInsiders: builder.query({

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import { useGetStocksQuery } from "../services/stockApi";
 import { counterActions } from "../app/store";
 import { Col, Row, Typography, Card, Input } from "antd";
 import { RiseOutlined, FallOutlined } from "@ant-design/icons";
@@ -14,41 +14,29 @@ const cardsStyle = {
 };
 
 const Stocks = () => {
-  const [wsbStocks, setWsbStocks] = useState([]);
+  const [wsbStocks, setWsbStocks] = useState(undefined);
   const [sentiment, setSentiment] = useState("");
-
+  const { data: stocksData, isFetching } = useGetStocksQuery();
+  console.log(stocksData);
   const onSearch = (value) => {
     setSentiment(value);
   };
 
-  // const counter = useSelector((state) => state.counter.counter);
-  // const show = useSelector((state) => state.counter.showCounter);
-
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const stocksData = await axios.get(
-          "https://dashboard.nbshare.io/api/v1/apps/reddit"
-        );
-        setWsbStocks(stocksData);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    fetchData();
-    const filterMinSentiment = wsbStocks?.data?.filter(
+    setWsbStocks([]);
+    const filterMinSentiment = stocksData?.filter(
       (stockData) => stockData.sentiment_score >= sentiment
     );
 
+    console.log(wsbStocks);
     console.log(filterMinSentiment);
 
     setWsbStocks(filterMinSentiment);
 
-    // setWsbStocks(filterMinVotes);
-  }, [sentiment]);
+    // setWsbStocks(filterMinSentiment);
+  }, [stocksData, sentiment]);
 
-  if (!wsbStocks) return <Loader />;
+  if (isFetching) return <Loader />;
   // if (isFetching) return <Loader />;
 
   // if (isFetching) return <Loader />;
@@ -81,7 +69,7 @@ const Stocks = () => {
       </div>
       <div style={cardsStyle}>
         <Row gutter={[32, 32]} className="crypto-card-container">
-          {wsbStocks?.data?.map((stockData) => (
+          {wsbStocks?.map((stockData) => (
             <Col
               xs={24}
               sm={12}
