@@ -29,18 +29,20 @@ const App = () => {
 
   if (isLoading) return <Loader />;
   return (
-    <div className="app">
-      <div>
-        Make more informed Investing Decisions with moon.
-        <div style={buttonsStyle}>
-          <LoginButton />
-          <LogoutButton />
-        </div>
-      </div>
-      {isAuthenticated && (
+    <div>
+      {!isAuthenticated && (
         <div>
+          Make more informed Investing Decisions with moon.
+          <div style={buttonsStyle}>
+            <LoginButton />
+          </div>
+        </div>
+      )}
+      {isAuthenticated && (
+        <div className="app">
           <div className="navbar">
             <Navbar />
+            <LogoutButton />
           </div>
           <div className="main">
             <Layout>
