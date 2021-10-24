@@ -30,9 +30,12 @@ const App = () => {
   if (isLoading) return <Loader />;
   return (
     <div className="app">
-      <div style={buttonsStyle}>
-        <LoginButton />
-        <LogoutButton />
+      <div>
+        Make more informed Investing Decisions with moon.
+        <div style={buttonsStyle}>
+          <LoginButton />
+          <LogoutButton />
+        </div>
       </div>
       {isAuthenticated && (
         <div>
