@@ -32,7 +32,8 @@ const App = () => {
     <div>
       {!isAuthenticated && (
         <div>
-          Make more informed Investing Decisions with moon.
+          moon is a financial platform that provides investors with more
+          informed financial information by providing better insights.
           <div style={buttonsStyle}>
             <LoginButton />
           </div>

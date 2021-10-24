@@ -13,7 +13,7 @@ import {
   EyeOutlined,
   DollarOutlined,
   HeartTwoTone,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 import icon from "../images/moon.png";
@@ -30,9 +30,8 @@ const buttonStyle = {
 
 const nameStyle = {
   marginTop: "10px",
-  marginLeft: "10px"
-}
-
+  marginLeft: "10px",
+};
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
@@ -71,7 +70,6 @@ const Navbar = () => {
 
   return (
     <div className="nav-container">
-  
       <div className="logo-container">
         <div style={titleStyle}>
           <Link to="/">
@@ -88,7 +86,6 @@ const Navbar = () => {
       </div>
       {activeMenu && (
         <Menu theme="light">
-      
           <Menu.Item icon={<HomeOutlined />}>
             <Link to="/">Home</Link>
           </Menu.Item>
@@ -102,7 +99,16 @@ const Navbar = () => {
             <Link to="/news">Crypto News</Link>
           </Menu.Item>
           <Menu.Item icon={<StockOutlined />}>
-            <Link to="/stocks">WSB Stocks</Link>
+            <Link to="/stocks">WSB Stocks Insights</Link>
+            <Button style={buttonStyle} type="primary" onClick={showModal}>
+              Premuim
+            </Button>
+            <Modal
+              title="Basic Modal"
+              visible={isModalVisible}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            ></Modal>
           </Menu.Item>
           {/* <Menu.Item icon={<FileDoneOutlined />}>
             <Link to="/options">Options</Link>
@@ -136,23 +142,17 @@ const Navbar = () => {
           </Menu.Item>
           <Menu.Item icon={<CalendarOutlined />}>
             <Link to="/schedule">Schedule</Link>
-            <Button style={buttonStyle} type="primary" onClick={showModal}>
-              Premuim
-            </Button>
-            <Modal
-              title="Basic Modal"
-              visible={isModalVisible}
-              onOk={handleOk}
-              onCancel={handleCancel}
-            ></Modal>
           </Menu.Item>
         </Menu>
       )}
-              <div style={nameStyle}>
-                Logged in as:
-           <Avatar src="https://joeschmoe.io/api/v1/random" style={{ width: 45 }}/>
-         {user.name} <HeartTwoTone />
-          </div>
+      <div style={nameStyle}>
+        Logged in as:
+        <Avatar
+          src="https://joeschmoe.io/api/v1/random"
+          style={{ width: 45 }}
+        />
+        {user.name} <HeartTwoTone />
+      </div>
     </div>
   );
 };
