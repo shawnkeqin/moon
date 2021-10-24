@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useGetInsidersQuery } from "../services/insiderApi";
 import { Table, Typography, Input } from "antd";
+import {
+  UsergroupAddOutlined
+} from "@ant-design/icons";
 import Loader from "./Loader";
 const { Title } = Typography;
 const { Search } = Input;
@@ -36,13 +39,13 @@ const Insiders = () => {
   ];
 
   useEffect(() => {
-    data?.insiderHolders.holders.map((val) => {
-      setInsider((oldArray) => [...oldArray, val.name]);
-      setTitle((oldArray) => [...oldArray, val.relation]);
-    });
+    // data?.insiderHolders.holders.map((val) => {
+    //   setInsider((oldArray) => [...oldArray, val.name]);
+    //   setTitle((oldArray) => [...oldArray, val.relation]);
+    // });
 
     setInsiderTrxs([]);
-    data?.insiderTransactions.transactions.map((trx) => {
+    data?.insiderTransactions?.transactions?.map((trx) => {
       let obj = {};
       obj["filerName"] = trx.filerName;
       obj["filerRelation"] = trx.filerRelation;
@@ -60,7 +63,7 @@ const Insiders = () => {
 
   return (
     <>
-      <Title>Insider Transactions</Title>
+      <Title><UsergroupAddOutlined /> Insider Transactions</Title>
       <Search
         placeholder="Search Stock"
         allowClear

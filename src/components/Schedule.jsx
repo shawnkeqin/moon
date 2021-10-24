@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Input, Typography, Table, List, Card } from "antd";
 import axios from "axios";
+import {FileDoneOutlined,
+AlertOutlined 
+} from "@ant-design/icons";
 const token = "c5q7oa2ad3iaqkueije0";
 const Schedule = () => {
   const { Search } = Input;
@@ -131,7 +134,7 @@ const Schedule = () => {
 
   return (
     <>
-      <Title>Earnings Schedule</Title>
+      <Title><FileDoneOutlined /> Earnings Schedule</Title>
       Start Date:
       <Search
         placeholder="Search Start Date (YYYY-MM--DD) - Start Date Must Be Before End Date"
@@ -149,7 +152,7 @@ const Schedule = () => {
         onSearch={onSearchEndDateEarnings}
       />
       <Table dataSource={events?.data?.earningsCalendar} columns={columns} />;
-      <Title>IPO Schedule</Title>
+      <Title><AlertOutlined /> IPO Schedule</Title>
       Start Date:
       <Search
         placeholder="Search Start Date (YYYY-MM--DD) - Start Date Must Be Before End Date"

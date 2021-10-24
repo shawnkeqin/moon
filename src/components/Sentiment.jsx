@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Radar, PolarArea } from "react-chartjs-2";
 import { Typography, Input, Timeline, List, Card, Avatar } from "antd";
+import {
+
+  RadarChartOutlined,
+
+} from "@ant-design/icons";
 import { useGetSentimentQuery } from "../services/sentimentApi";
 import twitter from "../images/twitter.png";
 import reddit from "../images/reddit.png";
@@ -139,7 +144,7 @@ const Sentiment = () => {
 
   return (
     <>
-      <Title>Social Media Sentiment for: {stock} </Title>
+      <Title><RadarChartOutlined /> Social Media Sentiment for: {stock} </Title>
       <div>
         <Search
           placeholder="Search Stock"

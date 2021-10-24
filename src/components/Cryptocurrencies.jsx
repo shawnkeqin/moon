@@ -3,6 +3,9 @@ import millify from "millify";
 import { Link } from "react-router-dom";
 import { Card, Row, Col, Input, Typography } from "antd";
 import Loader from "./Loader";
+import {
+  DollarOutlined,
+} from "@ant-design/icons";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 const { Title } = Typography;
 
@@ -27,7 +30,7 @@ const Cryptocurrencies = ({ simplified }) => {
   return (
     <>
       <div>
-        <Title>Cryptocurrencies</Title>
+        <Title><DollarOutlined /> Cryptocurrencies</Title>
       </div>
       {!simplified && (
         <div style={searchBarStyle}>

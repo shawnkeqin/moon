@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Select, Typography, Row, Col, Avatar, Card } from "antd";
-
+import {
+  ReadOutlined,
+} from "@ant-design/icons";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import moment from "moment";
@@ -23,7 +25,7 @@ const News = ({ simplified }) => {
 
   return (
     <>
-      <Title>Crypto News</Title>
+      <Title><ReadOutlined /> Crypto News</Title>
       <Row gutter={[24, 24]}>
         {!simplified && (
           <Col span={24}>

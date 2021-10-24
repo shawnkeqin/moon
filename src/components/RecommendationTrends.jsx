@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
 import { Col, Row, Typography, Select, Card, Input } from "antd";
+import {
+
+  EyeOutlined,
+
+} from "@ant-design/icons";
 const { Search } = Input;
 const { Title } = Typography;
 const token = "c5q7oa2ad3iaqkueije0";
@@ -65,7 +70,7 @@ const RecommendationTrends = () => {
 
   return (
     <>
-      <Title>Recommendation Trends for: {stock}</Title>
+      <Title><EyeOutlined /> Recommendation Trends for: {stock}</Title>
       <Typography>
         Get latest analyst recommendation trends for a company.
       </Typography>
