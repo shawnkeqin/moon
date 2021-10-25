@@ -5,6 +5,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@auth0/auth0-react": "^1.8.0",
+    "@front10/landing-page-book": "^2.0.0-beta.0",
     "@reduxjs/toolkit": "^1.6.2",
     "@tensorflow-models/qna": "^1.0.0",
     "@tensorflow-models/toxicity": "^1.2.2",

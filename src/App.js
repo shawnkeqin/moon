@@ -3,7 +3,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import { HeartTwoTone } from "@ant-design/icons";
 import { Layout, Typography, Space } from "antd";
 import {
-  Navbar,
+  NavBar,
   Exchanges,
   CryptoDetails,
   Cryptocurrencies,
@@ -17,32 +17,28 @@ import {
   Schedule,
   LoginButton,
   LogoutButton,
+   LandingPage
 } from "./components";
 import "./App.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loader from "./components/Loader";
-const buttonsStyle = {
-  marginLeft: "250px",
-};
+
+
+
 const App = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) return <Loader />;
   return (
     <div>
-      {!isAuthenticated && (
-        <div>
-          moon is a financial platform that provides investors with more
-          informed financial information by providing better insights.
-          <div style={buttonsStyle}>
-            <LoginButton />
-          </div>
-        </div>
+      {!isAuthenticated && ( 
+       <LandingPage />
+    
       )}
       {isAuthenticated && (
         <div className="app">
           <div className="navbar">
-            <Navbar />
+            <NavBar />
             <LogoutButton />
           </div>
           <div className="main">
