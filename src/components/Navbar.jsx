@@ -107,7 +107,7 @@ const Navbar = () => {
             </Button>
             <Modal
                bodyStyle={{height: '300px'}}
-              title="Basic Modal"
+              title="Subscribe to gain access"
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
@@ -130,7 +130,7 @@ const Navbar = () => {
             </Button>
             <Modal
             bodyStyle={{height: '300px'}}
-              title="Basic Modal"
+            title="Subscribe to gain access"
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
@@ -147,7 +147,7 @@ const Navbar = () => {
             </Button>
             <Modal
                bodyStyle={{height: '300px'}}
-              title="Basic Modal"
+               title="Subscribe to gain access"
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
