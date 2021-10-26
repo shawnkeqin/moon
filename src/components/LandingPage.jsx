@@ -8,26 +8,30 @@ import icon from '../images/banner.jpg'
 const { Header } = Layout;
 const {Title} = Typography
 
-const navBarTextStyle={
-  marginLeft: '200px',
-  marginTop: '400px'
-}
+// const navBarTextStyle={
+//   marginLeft: '200px',
+//   marginTop: '400px'
+// }
 
-const buttonStyle = {
-  marginLeft: '250px'
-}
+// const buttonStyle = {
+//   marginLeft: '250px'
+// }
 const LandingPage = () => {
     return(
-        <div>
-             <Header>
-                 <div style={{marginLeft: '750px'}}>
-                 <LoginButton />
-                 </div></Header>
-               <Title style={{marginLeft: '700px',marginTop: '400px',fontSize: '80px'}}> 🚀 moon </Title>
-   <Typography style={{ marginLeft: '250px',fontSize: '30px'}}> 🚀 moon is a financial platform that provides investors with better insights to make more informed decisions</Typography>  
-     <br />
-    <LoginButton />
-        </div>
+      <>
+      <Header />
+      <LoginButton></LoginButton>
+      </>
+  //       <div>
+  //            <Header>
+  //                <div style={{marginLeft: '750px'}}>
+  //                <LoginButton />
+  //                </div></Header>
+  //              <Title style={{marginLeft: '700px',marginTop: '400px',fontSize: '80px'}}> 🚀 moon </Title>
+  //  <Typography style={{ marginLeft: '250px',fontSize: '30px'}}> 🚀 moon is a financial platform that provides investors with better insights to make more informed decisions</Typography>  
+  //    <br />
+  //   <LoginButton />
+  //       </div>
 //         <div>   
                       
 //         {/* <Navbar brandTextColor="light" title="hello" bgColor="dark" brandLogo="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/apple/96/rocket_1f680.png"><div style={navBarTextStyle}>moon</div></Navbar> */}

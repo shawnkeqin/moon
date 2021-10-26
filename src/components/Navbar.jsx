@@ -17,6 +17,7 @@ import {
 } from "@ant-design/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 import icon from "../images/moon.png";
+import StripeContainer from "./StripeContainer";
 
 const titleStyle = {
   marginTop: "15px",
@@ -37,6 +38,7 @@ const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [showItem, setShowItem] = useState(false); 
   const { user } = useAuth0();
   const showModal = () => {
     setIsModalVisible(true);
@@ -108,7 +110,11 @@ const Navbar = () => {
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
-            ></Modal>
+            >
+            {showItem ? <StripeContainer/> : <><h3>$10.00</h3>
+<Button onClick={() => setShowItem(true)}>Purchase Subscription</Button>
+</>}
+            </Modal>
           </Menu.Item>
           {/* <Menu.Item icon={<FileDoneOutlined />}>
             <Link to="/options">Options</Link>
@@ -126,7 +132,11 @@ const Navbar = () => {
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
-            ></Modal>
+            >
+         {showItem ? <StripeContainer/> : <><h3>$10.00</h3>
+<Button onClick={() => setShowItem(true)}>Purchase Subscription</Button>
+</>}
+            </Modal>
           </Menu.Item>
           <Menu.Item icon={<EyeOutlined />}>
             <Link to="/recommendation-trends">Recommendations</Link>
@@ -138,7 +148,12 @@ const Navbar = () => {
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
-            ></Modal>
+            >
+{showItem ? <StripeContainer/> : <><h3>$10.00</h3>
+<Button onClick={() => setShowItem(true)}>Purchase Subscription</Button>
+</>}
+
+            </Modal>
           </Menu.Item>
           <Menu.Item icon={<CalendarOutlined />}>
             <Link to="/schedule">Schedule</Link>

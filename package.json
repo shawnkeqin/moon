@@ -7,6 +7,8 @@
     "@auth0/auth0-react": "^1.8.0",
     "@front10/landing-page-book": "^2.0.0-beta.0",
     "@reduxjs/toolkit": "^1.6.2",
+    "@stripe/react-stripe-js": "^1.6.0",
+    "@stripe/stripe-js": "^1.20.3",
     "@tensorflow-models/qna": "^1.0.0",
     "@tensorflow-models/toxicity": "^1.2.2",
     "@tensorflow/tfjs": "^3.10.0",
