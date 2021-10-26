@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { STRING_UNARY_OPERATORS } from '@babel/types';
-import {Button} from 'antd';
 
 const CARD_OPTIONS = {
 	iconStyle: "solid",
@@ -25,19 +23,20 @@ const CARD_OPTIONS = {
 }
 
 const PaymentForm = () => {
-    const [success, setSuccess] = useState(false);
-    const stripe = useStripe();
-    const elements = useElements();
+    const [success, setSuccess ] = useState(false)
+    const stripe = useStripe()
+    const elements = useElements()
+
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement)
-        });
+        })
 
 
-    if(!error){
+    if(!error) {
         try {
             const {id} = paymentMethod
             const response = await axios.post("http://localhost:4000/payment", {
@@ -45,34 +44,38 @@ const PaymentForm = () => {
                 id
             })
 
-            if(response.data.success){
+            if(response.data.success) {
                 console.log("Successful payment")
                 setSuccess(true)
             }
-        } catch(error){
-            console.log("Error", error); 
+
+        } catch (error) {
+            console.log("Error", error)
         }
     } else {
         console.log(error.message)
     }
-    }
-
+}
 
     return (
         <>
-{!success ? <form onSubmit={handleSubmit}>
-    <fieldset className="FormGroup">
-        <div className="FormRow">
-            <CardElement options={CARD_OPTIONS} />
-        </div>
-    </fieldset>
-    <Button>Pay</Button>
-</form> : <div>
-    <h2>
-        Thank you for your payment, you are succesfully subscribed! 🚀
-        </h2></div>}
-        </>
-    )
+        {!success ? 
+        <form onSubmit={handleSubmit}>
+            <fieldset className="FormGroup">
+                <div className="FormRow">
+                    <CardElement options={CARD_OPTIONS}/>
+                </div>
+            </fieldset>
+            <button>Pay</button>
+        </form>
+        :
+       <div>
+           <h2>
+Thank you for your payment, you are succesfully subscribed! 🚀</h2>
+       </div> 
+        }
+            
+        </>);
 }
 
 export default PaymentForm

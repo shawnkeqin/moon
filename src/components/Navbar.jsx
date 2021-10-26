@@ -106,6 +106,7 @@ const Navbar = () => {
               Premuim
             </Button>
             <Modal
+               bodyStyle={{height: '300px'}}
               title="Basic Modal"
               visible={isModalVisible}
               onOk={handleOk}
@@ -128,6 +129,7 @@ const Navbar = () => {
               Premuim
             </Button>
             <Modal
+            bodyStyle={{height: '300px'}}
               title="Basic Modal"
               visible={isModalVisible}
               onOk={handleOk}
@@ -144,6 +146,7 @@ const Navbar = () => {
               Premuim
             </Button>
             <Modal
+               bodyStyle={{height: '300px'}}
               title="Basic Modal"
               visible={isModalVisible}
               onOk={handleOk}
