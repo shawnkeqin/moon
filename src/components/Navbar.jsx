@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Menu, Typography, Avatar, Image, Modal } from "antd";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   HomeOutlined,
@@ -27,6 +28,7 @@ const titleStyle = {
 
 const buttonStyle = {
   marginLeft: "10px",
+  width: "100px",
 };
 
 const nameStyle = {
@@ -38,7 +40,8 @@ const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [showItem, setShowItem] = useState(false); 
+  const [showItem, setShowItem] = useState(false);
+  const hasUserPaid = useSelector((state) => state.payment.success);
   const { user } = useAuth0();
   const showModal = () => {
     setIsModalVisible(true);
@@ -102,19 +105,30 @@ const Navbar = () => {
           </Menu.Item>
           <Menu.Item icon={<StockOutlined />}>
             <Link to="/stocks">WSB Stocks Insights</Link>
-            <Button style={buttonStyle} type="primary" onClick={showModal}>
+            <Button
+              style={buttonStyle}
+              type="primary"
+              onClick={hasUserPaid ? null : showModal}
+            >
               Premuim
             </Button>
+
             <Modal
-               bodyStyle={{height: '300px'}}
               title="Subscribe to gain access"
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
             >
-            {showItem ? <StripeContainer/> : <><h3>$10.00</h3>
-<Button onClick={() => setShowItem(true)}>Purchase Subscription</Button>
-</>}
+              {showItem ? (
+                <StripeContainer />
+              ) : (
+                <>
+                  <h3>$10.00</h3>
+                  <button onClick={() => setShowItem(true)}>
+                    Purchase Subscription
+                  </button>
+                </>
+              )}
             </Modal>
           </Menu.Item>
           {/* <Menu.Item icon={<FileDoneOutlined />}>
@@ -125,37 +139,58 @@ const Navbar = () => {
           </Menu.Item>
           <Menu.Item icon={<RadarChartOutlined />}>
             <Link to="/sentiment">Sentiment</Link>
-            <Button style={buttonStyle} type="primary" onClick={showModal}>
+            <Button
+              style={buttonStyle}
+              type="primary"
+              onClick={hasUserPaid ? null : showModal}
+            >
               Premuim
             </Button>
             <Modal
-            bodyStyle={{height: '300px'}}
-            title="Subscribe to gain access"
+              bodyStyle={{ height: "300px" }}
+              title="Subscribe to gain access"
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
             >
-         {showItem ? <StripeContainer/> : <><h3>$10.00</h3>
-<Button onClick={() => setShowItem(true)}>Purchase Subscription</Button>
-</>}
+              {showItem ? (
+                <StripeContainer />
+              ) : (
+                <>
+                  <h3>$10.00</h3>
+                  <button onClick={() => setShowItem(true)}>
+                    Purchase Subscription
+                  </button>
+                </>
+              )}
             </Modal>
           </Menu.Item>
           <Menu.Item icon={<EyeOutlined />}>
             <Link to="/recommendation-trends">Recommendations</Link>
-            <Button style={buttonStyle} type="primary" onClick={showModal}>
+            <Button
+              style={buttonStyle}
+              type="primary"
+              onClick={hasUserPaid ? null : showModal}
+            >
               Premuim
             </Button>
             <Modal
-               bodyStyle={{height: '300px'}}
-               title="Subscribe to gain access"
+              bodyStyle={{ height: "300px" }}
+              title="Subscribe to gain access"
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
             >
-{showItem ? <StripeContainer/> : <><h3>$10.00</h3>
-<Button onClick={() => setShowItem(true)}>Purchase Subscription</Button>
-</>}
-
+              {showItem ? (
+                <StripeContainer />
+              ) : (
+                <>
+                  <h3>$10.00</h3>
+                  <button onClick={() => setShowItem(true)}>
+                    Purchase Subscription
+                  </button>
+                </>
+              )}
             </Modal>
           </Menu.Item>
           <Menu.Item icon={<CalendarOutlined />}>

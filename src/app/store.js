@@ -6,6 +6,17 @@ import { insiderApi } from "../services/insiderApi";
 import { fearAndGreedApi } from "../services/fearAndGreedApi";
 import { sentimentApi } from "../services/sentimentApi";
 const initialCounterState = { counter: 0, showCounter: true };
+const initialPaymentState = { success: false };
+
+const paymentSlice = createSlice({
+  name: "payment",
+  initialState: initialPaymentState,
+  reducers: {
+    payment(state) {
+      state.success = true;
+    },
+  },
+});
 
 const counterSlice = createSlice({
   name: "counter",
@@ -34,9 +45,10 @@ export default configureStore({
     [insiderApi.reducerPath]: insiderApi.reducer,
     [fearAndGreedApi.reducerPath]: fearAndGreedApi.reducer,
     [sentimentApi.reducerPath]: sentimentApi.reducer,
-
+    payment: paymentSlice.reducer,
     counter: counterSlice.reducer,
   },
 });
 
 export const counterActions = counterSlice.actions;
+export const paymentActions = paymentSlice.actions;

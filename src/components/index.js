@@ -1,4 +1,4 @@
-export { default as NavBar } from "./NavBar";
+export { default as NavBar } from "./Navbar";
 export { default as Cryptocurrencies } from "./Cryptocurrencies";
 export { default as CryptoDetails } from "./CryptoDetails";
 export { default as News } from "./News";
@@ -12,4 +12,4 @@ export { default as RecommendationTrends } from "./RecommendationTrends";
 export { default as Schedule } from "./Schedule";
 export { default as LoginButton } from "./LoginButton";
 export { default as LogoutButton } from "./LogoutButon";
-export {default as LandingPage} from './LandingPage';
+export { default as LandingPage } from "./LandingPage";
