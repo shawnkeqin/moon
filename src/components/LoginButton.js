@@ -7,9 +7,10 @@ const LoginButton = () => {
 
   return (
     !isAuthenticated && (
- 
       // <Button  style={{marginLeft: '820px'}}size="large" type="primary" onClick={() => loginWithRedirect()}>Get Started</Button>
-      <Button size="large" type="primary" onClick={() => loginWithRedirect()}>Get Started</Button>
+      <Button size="large" type="primary" onClick={() => loginWithRedirect()}>
+        Get Started
+      </Button>
     )
   );
 };
