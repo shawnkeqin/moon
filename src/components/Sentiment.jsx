@@ -222,7 +222,7 @@ const Sentiment = () => {
       />
     } */}
   </div></div> : <>
-  <Title>Purchase Premiuim Subscription to gain Access</Title>
+  <Title>Purchase Premium Subscription to gain Access</Title>
   </>
   }
       

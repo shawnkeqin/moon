@@ -93,7 +93,7 @@ const RecommendationTrends = () => {
         />
       </div></div> : <>
         <Title>
-        Purchase Premuim Subscription to gain Access 
+        Purchase Premium Subscription to gain Access 
         </Title>
         </> }
     </>
