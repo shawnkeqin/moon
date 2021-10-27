@@ -13,6 +13,7 @@ import {
   Button,
   Avatar,
 } from "antd";
+import { useSelector } from "react-redux";
 import { RiseOutlined, FallOutlined } from "@ant-design/icons";
 import Loader from "./Loader";
 import icon from "../images/wsb.png";
@@ -26,6 +27,7 @@ const cardsStyle = {
 const Stocks = () => {
   const [wsbStocks, setWsbStocks] = useState(undefined);
   const [sentiment, setSentiment] = useState("");
+  const hasUserPaid = useSelector((state) => state.payment.success);
   // const [bullOrBear, setBullOrBear] = useState("");
   const { data: stocksData, isFetching } = useGetStocksQuery();
   console.log(stocksData);
@@ -75,7 +77,7 @@ const Stocks = () => {
   // };
   return (
     <>
-      <Title>
+    {hasUserPaid ? <div><Title>
         <Avatar src={icon} size="large" />
         Trending r/wallstreetbets Stocks
       </Title>
@@ -127,7 +129,10 @@ const Stocks = () => {
         <Button onClick={increaseHandler}>Increase by 10</Button>
         <Button onClick={decrementHandler}>Decrement</Button>
       </div>
-      <Button onClick={toggleCounterHandler}>Toggle Counter</Button> */}
+      <Button onClick={toggleCounterHandler}>Toggle Counter</Button> */}</div> : <>
+      <Title>Purchase Premium Subscription to gain access</Title>
+      </>}
+      
     </>
   );
 };

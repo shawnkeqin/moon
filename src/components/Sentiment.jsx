@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import { Radar, PolarArea } from "react-chartjs-2";
 import { Typography, Input, Timeline, List, Card, Avatar } from "antd";
 import {
@@ -21,6 +22,7 @@ const Sentiment = () => {
   const { Title } = Typography;
   const [socialSentiment, setSocialSentiment] = useState(undefined);
   const [stock, setStock] = useState("TSLA");
+  const hasUserPaid = useSelector((state) => state.payment.success);
   const { data: sentiment, isFetching } = useGetSentimentQuery(stock);
   const onSearch = (value) => {
     setStock(value);
@@ -144,81 +146,86 @@ const Sentiment = () => {
 
   return (
     <>
-      <Title><RadarChartOutlined /> Social Media Sentiment for: {stock} </Title>
-      <div>
-        <Search
-          placeholder="Search Stock"
-          allowClear
-          enterButton="Search"
-          size="large"
-          onSearch={onSearch}
-        />
-        <div style={timeLineStyle}>
-          <PolarArea data={dataTwo} />
-          {/* <List
-            grid={{ gutter: 16, column: 4 }}
-            dataSource={sentiment}
-            renderItem={(item) => (
-              <List.Item>
-                <Card title={item.date}>
-                  <p>Sentiment Score: {item.score}</p>
-                  <p>Positive Score: {item.positive_score}</p>
-                  <p>Negative Score: {item.negative_score}</p>
-                  <p>Average 7 Days: {item.avg_7_days}</p>
-                  <p>Activity: {item.activity}</p>
-                </Card>
-              </List.Item>
-            )}
-          /> */}
-        </div>
-        <Title>
-          <Avatar src={reddit} size="large" /> Reddit Sentiment and
-          <Avatar src={twitter} size="large" /> Twitter Sentiment for: {stock}
-        </Title>
+    {hasUserPaid ? 
+  <div><Title><RadarChartOutlined /> Social Media Sentiment for: {stock} </Title>
+  <div>
+    <Search
+      placeholder="Search Stock"
+      allowClear
+      enterButton="Search"
+      size="large"
+      onSearch={onSearch}
+    />
+    <div style={timeLineStyle}>
+      <PolarArea data={dataTwo} />
+      {/* <List
+        grid={{ gutter: 16, column: 4 }}
+        dataSource={sentiment}
+        renderItem={(item) => (
+          <List.Item>
+            <Card title={item.date}>
+              <p>Sentiment Score: {item.score}</p>
+              <p>Positive Score: {item.positive_score}</p>
+              <p>Negative Score: {item.negative_score}</p>
+              <p>Average 7 Days: {item.avg_7_days}</p>
+              <p>Activity: {item.activity}</p>
+            </Card>
+          </List.Item>
+        )}
+      /> */}
+    </div>
+    <Title>
+      <Avatar src={reddit} size="large" /> Reddit Sentiment and
+      <Avatar src={twitter} size="large" /> Twitter Sentiment for: {stock}
+    </Title>
 
-        <Radar data={dataOne} options={options} />
-        {/* {
-          <List
-            grid={{ gutter: 16, column: 4 }}
-            dataSource={socialSentiment?.data?.reddit}
-            renderItem={(item) => (
-              <List.Item>
-                <Card title={item.atTime}>
-                  <p>Sentiment Score: {item.score}</p>
-                  <p>Positive Mention: {item.positiveMention}</p>
-                  <p>Negative Mention: {item.negativeMention}</p>
-                  <p>Positive Score: {item.positiveScore}</p>
-                  <p>Negative Score: {item.negativeScore}</p>
-                  <p>Average 7 Days: {item.avg_7_days}</p>
-                  <p>Mentions: {item.mention}</p>
-                </Card>
-              </List.Item>
-            )}
-          />
-        }
-        <Title>
-          <Avatar src={twitter} size="large" /> Twitter Sentiment for: {stock}
-        </Title>
-        {
-          <List
-            grid={{ gutter: 16, column: 4 }}
-            dataSource={socialSentiment?.data?.twitter}
-            renderItem={(item) => (
-              <List.Item>
-                <Card title={item.atTime}>
-                  <p>Sentiment Score: {item.score}</p>
-                  <p>Positive Mention: {item.positiveMention}</p>
-                  <p>Negative Mention: {item.negativeMention}</p>
-                  <p>Positive Score: {item.positiveScore}</p>
-                  <p>Negative Score: {item.negativeScore}</p>
-                  <p>Average 7 Days: {item.avg_7_days}</p>
-                  <p>Mentions: {item.mention}</p>
-                </Card>
-              </List.Item>
-            )}
-          />
-        } */}
-      </div>
+    <Radar data={dataOne} options={options} />
+    {/* {
+      <List
+        grid={{ gutter: 16, column: 4 }}
+        dataSource={socialSentiment?.data?.reddit}
+        renderItem={(item) => (
+          <List.Item>
+            <Card title={item.atTime}>
+              <p>Sentiment Score: {item.score}</p>
+              <p>Positive Mention: {item.positiveMention}</p>
+              <p>Negative Mention: {item.negativeMention}</p>
+              <p>Positive Score: {item.positiveScore}</p>
+              <p>Negative Score: {item.negativeScore}</p>
+              <p>Average 7 Days: {item.avg_7_days}</p>
+              <p>Mentions: {item.mention}</p>
+            </Card>
+          </List.Item>
+        )}
+      />
+    }
+    <Title>
+      <Avatar src={twitter} size="large" /> Twitter Sentiment for: {stock}
+    </Title>
+    {
+      <List
+        grid={{ gutter: 16, column: 4 }}
+        dataSource={socialSentiment?.data?.twitter}
+        renderItem={(item) => (
+          <List.Item>
+            <Card title={item.atTime}>
+              <p>Sentiment Score: {item.score}</p>
+              <p>Positive Mention: {item.positiveMention}</p>
+              <p>Negative Mention: {item.negativeMention}</p>
+              <p>Positive Score: {item.positiveScore}</p>
+              <p>Negative Score: {item.negativeScore}</p>
+              <p>Average 7 Days: {item.avg_7_days}</p>
+              <p>Mentions: {item.mention}</p>
+            </Card>
+          </List.Item>
+        )}
+      />
+    } */}
+  </div></div> : <>
+  <Title>Purchase Premiuim Subscription to gain Access</Title>
+  </>
+  }
+      
     </>
   );
 };

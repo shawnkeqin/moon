@@ -113,7 +113,7 @@ const Navbar = () => {
             <Link to="/news">Crypto News</Link>
           </Menu.Item>
           <Menu.Item icon={<StockOutlined />}>
-            <Link to="/stocks">WSB Stocks Insights</Link>
+            <Link to="/stocks" onClick={hasUserPaid ? null : showModal} >WSB Stocks Insights</Link>
             <Button
               style={buttonStyle}
               type="primary"
@@ -147,7 +147,7 @@ const Navbar = () => {
             <Link to="/insiders">Insiders</Link>
           </Menu.Item>
           <Menu.Item icon={<RadarChartOutlined />}>
-            <Link to="/sentiment">Sentiment</Link>
+            <Link to="/sentiment" onClick={hasUserPaid ? null : showModal}>Sentiment</Link>
             <Button
               style={buttonStyle}
               type="primary"
@@ -174,8 +174,8 @@ const Navbar = () => {
               )}
             </Modal>
           </Menu.Item>
-          <Menu.Item icon={<EyeOutlined />}>
-            <Link to="/recommendation-trends">Recommendations</Link>
+          <Menu.Item icon={<EyeOutlined />} >
+            <Link to="/recommendation-trends" onClick={hasUserPaid ? null : showModal}>Recommendations</Link>
             <Button
               style={buttonStyle}
               type="primary"

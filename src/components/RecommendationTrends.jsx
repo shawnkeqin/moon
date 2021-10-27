@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
 import { Col, Row, Typography, Select, Card, Input } from "antd";
 import {
@@ -13,7 +14,7 @@ const token = "c5q7oa2ad3iaqkueije0";
 const RecommendationTrends = () => {
   const [stock, setStock] = useState("TSLA");
   const [recommendations, setRecommendation] = useState(undefined);
-
+  const hasUserPaid = useSelector((state) => state.payment.success);
   const labels = ["Buy", "Hold", "Sell", "Strong Buy", "Strong Sell"];
   const onSearch = (value) => {
     setStock(value);
@@ -70,6 +71,8 @@ const RecommendationTrends = () => {
 
   return (
     <>
+      {hasUserPaid ? 
+      <div>
       <Title><EyeOutlined /> Recommendation Trends for: {stock}</Title>
       <Typography>
         Get latest analyst recommendation trends for a company.
@@ -88,7 +91,11 @@ const RecommendationTrends = () => {
           height={10}
           options={{ maintainAspectRatio: true }}
         />
-      </div>
+      </div></div> : <>
+        <Title>
+        Purchase Premuim Subscription to gain Access 
+        </Title>
+        </> }
     </>
   );
 };
