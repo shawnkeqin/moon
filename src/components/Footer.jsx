@@ -11,91 +11,48 @@ function Footer() {
         <Row>
           <Col lg={4} sm={24} xs={24}>
             <div className="footer-center">
-              <h2>G2</h2>
+              <h2>About Us</h2>
               <div>
                 <a target="_blank " href="#">
-                  图表示例
-                </a>
-              </div>
-              <div>
-                <a target="_blank " href="#">
-                  API 文档
-                </a>
-              </div>
-              <div>
-                <a href="#">使用教程</a>
-              </div>
-            </div>
-          </Col>
-          <Col lg={4} sm={24} xs={24}>
-            <div className="footer-center">
-              <h2>G6</h2>
-              <div>
-                <a href="#">图表示例</a>
-              </div>
-              <div>
-                <a target="_blank" rel="noopener" href="#">
-                  API 文档
-                </a>
-              </div>
-              <div>
-                <a target="_blank" rel="noopener" href="#">
-                  使用教程
+                  Learn More
                 </a>
               </div>
             </div>
           </Col>
           <Col lg={4} sm={24} xs={24}>
             <div className="footer-center">
-              <h2>F2</h2>
+              <h2>Terms of Service</h2>
               <div>
-                <a href="#">图表示例</a>
-              </div>
-              <div>
-                <a target="_blank" rel="noopener" href="#">
-                  API 文档
-                </a>
-              </div>
-              <div>
-                <a target="_blank" rel="noopener" href="#">
-                  使用教程
-                </a>
+                <a href="#">Click to view</a>
               </div>
             </div>
           </Col>
           <Col lg={4} sm={24} xs={24}>
             <div className="footer-center">
-              <h2>墨者学院</h2>
+              <h2>Contact Us</h2>
               <div>
-                <a href="#">博客</a>
+                <a href="#">Send us a message</a>
               </div>
+            </div>
+          </Col>
+          <Col lg={4} sm={24} xs={24}>
+            <div className="footer-center">
+              <h2>Privacy</h2>
               <div>
-                <a target="_blank" rel="noopener" href="#">
-                  设计原则
-                </a>
-              </div>
-              <div>
-                <a target="_blank" rel="noopener" href="#">
-                  图表用法
-                </a>
-              </div>
-              <div>
-                <a target="_blank" rel="noopener" href="#">
-                  资源
-                </a>
+                <a href="#">Click to view</a>
               </div>
             </div>
           </Col>
           <Col lg={8} sm={24} xs={24}>
             <div className="footer-center">
-              <h2>更多产品</h2>
+              <h2>Built in:</h2>
               <div>
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
                   href="http://ant.design/"
                 >
-                  Ant Design
+                  Singapore / NYC
                 </a>
                 <span> - </span>
                 <span>蚂蚁 UI 设计体系</span>
