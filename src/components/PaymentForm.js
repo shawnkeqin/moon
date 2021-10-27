@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import { Button } from "antd";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { paymentActions } from "../app/store";
 const CARD_OPTIONS = {
@@ -22,6 +23,18 @@ const CARD_OPTIONS = {
     },
   },
 };
+
+const PayButton = {
+      marginLeft: '12px',
+      width: 'calc(100% - 30px)',
+      backgroundColor: '#f6a4eb',
+      borderRadius: '4px',
+      cursor: 'pointer',
+      border: 'none',
+  }
+  
+  
+
 
 const PaymentForm = () => {
   const [success, setSuccess] = useState(false);
@@ -70,7 +83,7 @@ const PaymentForm = () => {
               <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
-          <button>Pay</button>
+          <Button style={PayButton}>Pay</Button>
         </form>
       ) : (
         <div>

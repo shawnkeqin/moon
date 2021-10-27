@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Menu, Typography, Avatar, Image, Modal } from "antd";
+import { Button, Menu, Typography, Avatar, Image, Modal,Tag } from "antd";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -19,6 +19,15 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import icon from "../images/moon.png";
 import StripeContainer from "./StripeContainer";
+
+const PayButton = {
+	width: 'calc(100% - 30px)',
+	backgroundColor: '#f6a4eb',
+	borderRadius: '4px',
+	cursor: 'pointer',
+	border: 'none',
+}
+
 
 const titleStyle = {
   marginTop: "15px",
@@ -124,9 +133,9 @@ const Navbar = () => {
               ) : (
                 <>
                   <h3>$10.00</h3>
-                  <button onClick={() => setShowItem(true)}>
+                  <Button style={PayButton} onClick={() => setShowItem(true)}>
                     Purchase Subscription
-                  </button>
+                  </Button>
                 </>
               )}
             </Modal>
@@ -158,9 +167,9 @@ const Navbar = () => {
               ) : (
                 <>
                   <h3>$10.00</h3>
-                  <button onClick={() => setShowItem(true)}>
+                  <Button style={PayButton}  onClick={() => setShowItem(true)}>
                     Purchase Subscription
-                  </button>
+                  </Button>
                 </>
               )}
             </Modal>
@@ -186,9 +195,9 @@ const Navbar = () => {
               ) : (
                 <>
                   <h3>$10.00</h3>
-                  <button onClick={() => setShowItem(true)}>
+                  <Button style={PayButton}  onClick={() => setShowItem(true)}>
                     Purchase Subscription
-                  </button>
+                  </Button>
                 </>
               )}
             </Modal>
@@ -198,14 +207,14 @@ const Navbar = () => {
           </Menu.Item>
         </Menu>
       )}
-      <div style={nameStyle}>
+     <Tag color="processing">
         Logged in as:
         <Avatar
           src="https://joeschmoe.io/api/v1/random"
           style={{ width: 45 }}
         />
         {user.name} <HeartTwoTone />
-      </div>
+      </Tag>
     </div>
   );
 };
