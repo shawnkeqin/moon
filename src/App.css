@@ -466,3 +466,17 @@ h3 {
   display: grid;
   grid-template-columns: 0.8fr 1fr;
 }
+
+.right {
+  position: absolute;
+  right: 0px;
+  width: 150px;
+  padding: 5px;
+}
+
+.left {
+  position: absolute;
+  left: 10px;
+  width: 150px;
+  padding: 5px;
+}

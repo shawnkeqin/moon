@@ -100,23 +100,21 @@ const Navbar = () => {
       </div>
       {activeMenu && (
         <Menu theme="light">
-          <Menu.Item icon={<HomeOutlined />}>
+          <Menu.Item key="1" icon={<HomeOutlined />}>
             <Link to="/">Home</Link>
           </Menu.Item>
-          <Menu.Item icon={<DollarOutlined />}>
+          <Menu.Item key="2" icon={<DollarOutlined />}>
             <Link to="/cryptocurrencies">Cryptocurrencies</Link>
           </Menu.Item>
           {/* <Menu.Item icon={<MoneyCollectOutlined />}>
             <Link to="/exchanges">Exchanges</Link>
           </Menu.Item> */}
-          <Menu.Item icon={<BulbOutlined />}>
+          <Menu.Item key="3" icon={<BulbOutlined />}>
             <Link to="/news">Crypto News</Link>
           </Menu.Item>
           <Menu.Item icon={<StockOutlined />}>
             {/* <Link to="/stocks" onClick={hasUserPaid ? null : showModal}> */}
-            <Link to="/stocks">
-              WSB Stocks Insights
-            </Link>
+            <Link to="/stocks">WSB Stocks Insights</Link>
             <Button
               style={buttonStyle}
               type="primary"
@@ -146,14 +144,12 @@ const Navbar = () => {
           {/* <Menu.Item icon={<FileDoneOutlined />}>
             <Link to="/options">Options</Link>
           </Menu.Item> */}
-          <Menu.Item icon={<FileDoneOutlined />}>
+          <Menu.Item key="4" icon={<FileDoneOutlined />}>
             <Link to="/insiders">Insiders</Link>
           </Menu.Item>
-          <Menu.Item icon={<RadarChartOutlined />}>
+          <Menu.Item key="5" icon={<RadarChartOutlined />}>
             {/* <Link to="/sentiment" onClick={hasUserPaid ? null : showModal}> */}
-            <Link to="/sentiment" >
-              Sentiment
-            </Link>
+            <Link to="/sentiment">Sentiment</Link>
             <Button
               style={buttonStyle}
               type="primary"
@@ -180,16 +176,12 @@ const Navbar = () => {
               )}
             </Modal>
           </Menu.Item>
-          <Menu.Item icon={<EyeOutlined />}>
+          <Menu.Item key="6" icon={<EyeOutlined />}>
             {/* <Link
               to="/recommendation-trends"
               onClick={hasUserPaid ? null : showModal}
             > */}
-              <Link
-              to="/recommendation-trends"
-            >
-              Recommendations
-            </Link>
+            <Link to="/recommendation-trends">Recommendations</Link>
             <Button
               style={buttonStyle}
               type="primary"
@@ -216,10 +208,10 @@ const Navbar = () => {
               )}
             </Modal>
           </Menu.Item>
-          <Menu.Item icon={<CalendarOutlined />}>
+          <Menu.Item key="7" icon={<CalendarOutlined />}>
             <Link to="/schedule">Schedule</Link>
           </Menu.Item>
-          <Menu.Item icon={<FormOutlined />}>
+          <Menu.Item key="8" icon={<FormOutlined />}>
             Feedback
             <a href="https://docs.google.com/forms/d/1pSQI1GbYd0IE-HDeVxMi0WnEQGwYLJxhDf_l-lwPsWM/prefill"></a>
           </Menu.Item>

@@ -12,9 +12,7 @@ const { Title } = Typography;
 const titleStyle = {
   marginTop: "230px",
 };
-const buttonStyle = {
-  marginLeft: "420px",
-};
+
 class Banner extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
@@ -38,10 +36,10 @@ class Banner extends React.PureComponent {
             <Title level={3}>
               🚀 moon is a financial platform that provides investors with
               better insights to make more informed decisions
+              <div>
+                <LoginButton />
+              </div>
             </Title>
-            <div style={buttonStyle}>
-              <LoginButton />
-            </div>
           </div>
 
           <div class="grid-child green">

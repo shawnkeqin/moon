@@ -1,67 +1,72 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Statistic, Row, Col, Card, Tag, Divider, List, Input , Table} from "antd";
+import {
+  Typography,
+  Statistic,
+  Row,
+  Col,
+  Card,
+  Tag,
+  Divider,
+  List,
+  Input,
+  Table,
+} from "antd";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
-import moment from "moment";
 import { useGetFearAndGreedQuery } from "../services/fearAndGreedApi";
 import {
   ArrowUpOutlined,
   ArrowDownOutlined,
   GlobalOutlined,
   TeamOutlined,
-  ThunderboltOutlined 
+  ThunderboltOutlined,
 } from "@ant-design/icons";
 import Loader from "./Loader";
 const token = "c5q7oa2ad3iaqkueije0";
 const { Search } = Input;
 const { Title, Text } = Typography;
-const newsTitle = {
-  marginTop: "40px",
-  marginLeft: "500px",
-};
 
 const divStyle = {
   marginTop: "40px",
-}
+};
 
 const Homepage = () => {
   // const { data, isFetching } = useGetCryptosQuery(10);
   const { data: fgIndex, isFetching } = useGetFearAndGreedQuery();
-  const [news, setNews] = useState(undefined);
   const [peers, setPeers] = useState(undefined);
   const [stock, setStock] = useState("AAPL");
   const [earningsStock, setEarningsStock] = useState("AAPL");
   const [earnings, setEarnings] = useState(undefined);
   const columns = [
     {
-      title: 'Symbol',
-      dataIndex: 'symbol',
-      key: 'symbol',
+      title: "Symbol",
+      dataIndex: "symbol",
+      key: "symbol",
     },
     {
-      title: 'Actual',
-      dataIndex: 'actual',
-      key: 'actual',
+      title: "Actual",
+      dataIndex: "actual",
+      key: "actual",
     },
     {
-      title: 'Estimate',
-      dataIndex: 'estimate',
-      key: 'estimate',
+      title: "Estimate",
+      dataIndex: "estimate",
+      key: "estimate",
     },
     {
-      title: 'Period',
-      dataIndex: 'period',
-      key: 'period',
+      title: "Period",
+      dataIndex: "period",
+      key: "period",
     },
     {
-      title: 'Surprise',
-      dataIndex: 'surprise',
-      key: 'surprise',
+      title: "Surprise",
+      dataIndex: "surprise",
+      key: "surprise",
     },
     {
-      title: 'Surprise Percent',
-      dataIndex: 'surprisePercent',
-      key: 'surprisePercent',
+      title: "Surprise Percent",
+      dataIndex: "surprisePercent",
+      key: "surprisePercent",
     },
   ];
 
@@ -74,13 +79,13 @@ const Homepage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const newsData = await axios.get(
-          `https://finnhub.io/api/v1/news?category=merger&token=${token}`
+        const peersData = await axios.get(
+          `https://finnhub.io/api/v1/stock/peers?symbol=${stock}&token=${token}`
         );
-        setNews(newsData);
-        const peersData = await axios.get(`https://finnhub.io/api/v1/stock/peers?symbol=${stock}&token=${token}`);
-        setPeers(peersData.data); 
-        const earningsData = await axios.get(`https://finnhub.io/api/v1/stock/earnings?symbol=${earningsStock}&token=${token}`)
+        setPeers(peersData.data);
+        const earningsData = await axios.get(
+          `https://finnhub.io/api/v1/stock/earnings?symbol=${earningsStock}&token=${token}`
+        );
         setEarnings(earningsData.data);
       } catch (error) {
         console.log(error);
@@ -88,7 +93,7 @@ const Homepage = () => {
     }
 
     fetchData();
-  }, [stock,earningsStock]);
+  }, [stock, earningsStock]);
   const labels = [
     "One Year Ago",
     "One Month Ago",
@@ -332,51 +337,65 @@ const Homepage = () => {
           </Col>
         </Row>
         <div style={divStyle}>
-        <Title><TeamOutlined /> Search Industry Peers of Stock</Title>
-        <div id="inner">
-        <div style={{marginLeft: '300px'}}><Tag color="cyan">{stock}</Tag></div>
-        <br />
-        <Typography>
-        Peer groups refer to companies that are in the same industry or sector. These are competitors that are roughly the same size. Peer groups can be found in analyst research reports or an individual company's financial statements.
-        </Typography>
-        </div>
-        <br />
-        <Search
+          <Title>
+            <TeamOutlined /> Search Industry Peers of Stock
+          </Title>
+          <div id="inner">
+            <div style={{ marginLeft: "300px" }}>
+              <Tag color="cyan">{stock}</Tag>
+            </div>
+            <br />
+            <Typography>
+              Peer groups refer to companies that are in the same industry or
+              sector. These are competitors that are roughly the same size. Peer
+              groups can be found in analyst research reports or an individual
+              company's financial statements.
+            </Typography>
+          </div>
+          <br />
+          <Search
             placeholder="Search Stock"
             allowClear
             enterButton="Search"
             size="large"
             onSearch={onSearch}
           />
-        <Divider orientation="left">Industry Peers of Stock</Divider>
-    <List
-      size="large"
-      bordered
-      dataSource={peers}
-      renderItem={item => <List.Item>{item}</List.Item>}
-    />
-     </div>
-    <div style={divStyle}>
-    <Title><ThunderboltOutlined /> Earnings Surprises for Stock</Title>
-    <div id="inner">
-    <div style={{marginLeft: '300px'}}><Tag color="cyan">{earningsStock}</Tag></div>
-    <br />
-    <Typography>
-    An earning surprise occurs when a company reports figures that are drastically different from Wall Street estimates. A positive surprise will often lead to a sharp increase in the company's stock price, while a negative surprise to a rapid decline.
-        </Typography>
+          <Divider orientation="left">Industry Peers of Stock</Divider>
+          <List
+            size="large"
+            bordered
+            dataSource={peers}
+            renderItem={(item) => <List.Item>{item}</List.Item>}
+          />
         </div>
-        <br />
-    <Search
+        <div style={divStyle}>
+          <Title>
+            <ThunderboltOutlined /> Earnings Surprises for Stock
+          </Title>
+          <div id="inner">
+            <div style={{ marginLeft: "300px" }}>
+              <Tag color="cyan">{earningsStock}</Tag>
+            </div>
+            <br />
+            <Typography>
+              An earning surprise occurs when a company reports figures that are
+              drastically different from Wall Street estimates. A positive
+              surprise will often lead to a sharp increase in the company's
+              stock price, while a negative surprise to a rapid decline.
+            </Typography>
+          </div>
+          <br />
+          <Search
             placeholder="Search Stock"
             allowClear
             enterButton="Search"
             size="large"
             onSearch={onSearchEarnings}
           />
-          <br/>
-          <br/>
-    <Table columns={columns} dataSource={earnings} />
-    </div>
+          <br />
+          <br />
+          <Table columns={columns} dataSource={earnings} />
+        </div>
       </div>
       ,
       {/* <Title level={2} className="heading">

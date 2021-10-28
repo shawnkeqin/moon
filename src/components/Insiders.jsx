@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useGetInsidersQuery } from "../services/insiderApi";
-import { Table, Typography, Input, Tag} from "antd";
-import {
-  UsergroupAddOutlined
-} from "@ant-design/icons";
+import { Table, Typography, Input, Tag } from "antd";
+import { UsergroupAddOutlined } from "@ant-design/icons";
 import Loader from "./Loader";
 const { Title } = Typography;
 const { Search } = Input;
 const Insiders = () => {
-  const [insiders, setInsider] = useState([]);
   const [insiderTrxs, setInsiderTrxs] = useState([]);
-  const [titles, setTitle] = useState([]);
   const [region, setRegion] = useState("US");
   const [ticker, setTicker] = useState("AAPL");
   const { data, isFetching } = useGetInsidersQuery(ticker, region);
@@ -63,16 +59,23 @@ const Insiders = () => {
 
   return (
     <>
-      <Title><UsergroupAddOutlined /> Insider Transactions</Title>
+      <Title>
+        <UsergroupAddOutlined /> Insider Transactions
+      </Title>
       <div id="inner">
-      <div style={{marginLeft: '300px'}}><Tag color="cyan">{ticker}</Tag></div>
-      <br />
-    <Typography>
-    Tracking insider transactions can be a valuable strategy. Knowing when corporate insiders are investing in their own company, or when multiple insiders are buying or selling the same stocks is useful information. After all, insiders often have better practical insights into a company’s outlook than the average investor.
-
-        </Typography>
-        <br/>
+        <div style={{ marginLeft: "300px" }}>
+          <Tag color="cyan">{ticker}</Tag>
         </div>
+        <br />
+        <Typography>
+          Tracking insider transactions can be a valuable strategy. Knowing when
+          corporate insiders are investing in their own company, or when
+          multiple insiders are buying or selling the same stocks is useful
+          information. After all, insiders often have better practical insights
+          into a company’s outlook than the average investor.
+        </Typography>
+        <br />
+      </div>
       <Search
         placeholder="Search Stock Ticker"
         allowClear
@@ -80,7 +83,6 @@ const Insiders = () => {
         size="large"
         onSearch={onSearch}
       />
-     
       <Table dataSource={insiderTrxs} columns={columns} />;
     </>
   );
