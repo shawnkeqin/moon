@@ -55,19 +55,9 @@ function Footer() {
                   Singapore / NYC
                 </a>
                 <span> - </span>
-                <span>蚂蚁 UI 设计体系</span>
+                <span>Currently in beta release v1.0.0</span>
               </div>
-              <div>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://eggjs.org/"
-                >
-                  Egg
-                </a>
-                <span> - </span>
-                <span>企业级 Node Web 开发框架</span>
-              </div>
+       
             </div>
           </Col>
         </Row>
@@ -84,24 +74,24 @@ function Footer() {
             }}
           >
             <a
-              href="https://docs.alipay.com/policies/privacy/antfin"
+              href=""
               rel="noopener noreferrer"
               target="_blank"
             >
-              隐私权政策 ICP
+              +65 97244001
             </a>
           </span>
           <span style={{ marginRight: 24 }}>
             <a
-              href="https://render.alipay.com/p/f/fd-izto3cem/index.html"
+              href=""
               rel="noopener noreferrer"
               target="_blank"
             >
-              权益保障承诺书
+             shawnlimkq95@gmail.com
             </a>
           </span>
-          <span style={{ marginRight: 12 }}>ICP 证浙 B2-2-100257</span>
           <span style={{ marginRight: 12 }}>Copyright © 🚀 moon</span>
+          <span style={{ marginRight: 12 }}>All rights reserved.</span>
         </Col>
       </Row>
     </footer>

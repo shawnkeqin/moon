@@ -35,12 +35,19 @@ class LandingPage extends React.PureComponent {
             <LoginButton />
           </div>
         </Header>
+        <br/>
+        <br/>
         <Banner
           key="banner"
           isMobile={this.state.isMobile}
           navToShadow={this.navToShadow}
         />
-        ,
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <Footer />
       </>,
     ];

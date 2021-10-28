@@ -220,7 +220,8 @@ const Navbar = () => {
             <Link to="/schedule">Schedule</Link>
           </Menu.Item>
           <Menu.Item icon={<FormOutlined />}>
-            <Link to="/schedule">Feedback</Link>
+            Feedback
+            <a href="https://docs.google.com/forms/d/1pSQI1GbYd0IE-HDeVxMi0WnEQGwYLJxhDf_l-lwPsWM/prefill"></a>
           </Menu.Item>
         </Menu>
       )}
