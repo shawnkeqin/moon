@@ -77,22 +77,27 @@ const Stocks = () => {
   // };
   return (
     <>
-    {hasUserPaid ? <div><Title>
+
+ <div><Title>
         <Avatar src={icon} size="large" />
         Trending r/wallstreetbets Stocks
       </Title>
-      <div className="grid-container">
+        
+      <div id="inner">
+    <Typography>
+    Real-time WallStreetBets sentiment tracker measures sentiment on the popular stocks forum. Comments from the sub-reddit stream in real-time and the sentiment meters continuously update. 
+        </Typography>
+        </div>
+        <br />
+      <div>
         <Search
           placeholder="Search Sentiment Score"
           allowClear
           enterButton="Search"
-          size="medium"
+          size="large"
           onSearch={onSearch}
         />
       </div>
-      {/* <Dropdown overlay={menu} placement="bottomLeft" arrow>
-        <Button>Filter Sentiment</Button>
-      </Dropdown> */}
       <div style={cardsStyle}>
         <Row gutter={[32, 32]} className="crypto-card-container">
           {wsbStocks?.map((stockData) => (
@@ -129,9 +134,59 @@ const Stocks = () => {
         <Button onClick={increaseHandler}>Increase by 10</Button>
         <Button onClick={decrementHandler}>Decrement</Button>
       </div>
-      <Button onClick={toggleCounterHandler}>Toggle Counter</Button> */}</div> : <>
+      <Button onClick={toggleCounterHandler}>Toggle Counter</Button> */}</div> 
+
+
+
+
+
+    
+    {/* {hasUserPaid ? <div><Title>
+        <Avatar src={icon} size="large" />
+        Trending r/wallstreetbets Stocks
+      </Title>
+      <div className="grid-container">
+        <Search
+          placeholder="Search Sentiment Score"
+          allowClear
+          enterButton="Search"
+          size="medium"
+          onSearch={onSearch}
+        />
+      </div>
+      <div style={cardsStyle}>
+        <Row gutter={[32, 32]} className="crypto-card-container">
+          {wsbStocks?.map((stockData) => (
+            <Col
+              xs={24}
+              sm={12}
+              lg={6}
+              className="crypto-card"
+              key={stockData.ticker}
+            >
+              <Card
+                title={`${stockData.ticker}`}
+                extra={
+                  <Typography>
+                    Sentiment: {stockData.sentiment}
+                    {stockData.sentiment === "Bullish" ? (
+                      <RiseOutlined />
+                    ) : (
+                      <FallOutlined />
+                    )}
+                  </Typography>
+                }
+              >
+                <p>Sentiment Score: {stockData.sentiment_score}</p>
+                <p>No. of comments: {stockData.no_of_comments}</p>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </div>
+      </div> : <>
       <Title>Purchase Premium Subscription to gain access</Title>
-      </>}
+      </>} */}
       
     </>
   );

@@ -26,6 +26,11 @@ const News = ({ simplified }) => {
   return (
     <>
       <Title><ReadOutlined /> Crypto News</Title>
+      <div id="inner">
+    <Typography>
+    Get the latest real-time crypto news here. Filter news based on Cryptocurrency and stay up to date.
+        </Typography>
+        </div>
       <Row gutter={[24, 24]}>
         {!simplified && (
           <Col span={24}>

@@ -31,6 +31,13 @@ const Cryptocurrencies = ({ simplified }) => {
     <>
       <div>
         <Title><DollarOutlined /> Cryptocurrencies</Title>
+       
+        <div id="inner">
+    <Typography>
+   Click on a Cryptourrency to view more details. Investing in crypto assets is risky but also potentially extremely profitable. Cryptocurrency is a good investment if you want to gain direct exposure to the demand for digital currency, while a safer but potentially less lucrative alternative is to buy the stocks of companies with exposure to cryptocurrency.
+        </Typography>
+        </div>
+        <br />
       </div>
       {!simplified && (
         <div style={searchBarStyle}>

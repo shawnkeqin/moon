@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Radar, PolarArea } from "react-chartjs-2";
-import { Typography, Input, Avatar } from "antd";
+import { Typography, Input, Avatar, Tag } from "antd";
 import { RadarChartOutlined } from "@ant-design/icons";
 import { useGetSentimentQuery } from "../services/sentimentApi";
 import twitter from "../images/twitter.png";
@@ -142,7 +142,39 @@ const Sentiment = () => {
 
   return (
     <>
-      {hasUserPaid ? (
+       
+        <div>
+          <Title>
+            <RadarChartOutlined /> Social Media Sentiment for: <div style={{marginBottom: '4px'}}><Tag color="cyan">{stock}</Tag></div>
+          </Title>
+          <div id="inner">
+    <Typography>
+    Stock sentiment analysis can be used to determine investors’ opinions of a specific stock or asset. Sentiment may at times hint at future price action. This is also an example of how trading psychology can affect a market, assisting as a forecasting tool to determine possible future price changes in a particular asset.
+        </Typography>
+        <br />
+        </div>
+          <div>
+            <Search
+              placeholder="Search Stock Ticker"
+              allowClear
+              enterButton="Search"
+              size="large"
+              onSearch={onSearch}
+            />
+            <div style={timeLineStyle}>
+              <PolarArea data={dataTwo} />
+            </div>
+            <Title>
+              <Avatar src={reddit} size="large" /> Reddit Sentiment and
+              <Avatar src={twitter} size="large" /> Twitter Sentiment for:{" "}
+              {stock}
+            </Title>
+
+            <Radar data={dataOne} options={options} />
+          </div>
+        </div>
+      
+      {/* {hasUserPaid ? (
         <div>
           <Title>
             <RadarChartOutlined /> Social Media Sentiment for: {stock}{" "}
@@ -157,21 +189,6 @@ const Sentiment = () => {
             />
             <div style={timeLineStyle}>
               <PolarArea data={dataTwo} />
-              {/* <List
-        grid={{ gutter: 16, column: 4 }}
-        dataSource={sentiment}
-        renderItem={(item) => (
-          <List.Item>
-            <Card title={item.date}>
-              <p>Sentiment Score: {item.score}</p>
-              <p>Positive Score: {item.positive_score}</p>
-              <p>Negative Score: {item.negative_score}</p>
-              <p>Average 7 Days: {item.avg_7_days}</p>
-              <p>Activity: {item.activity}</p>
-            </Card>
-          </List.Item>
-        )}
-      /> */}
             </div>
             <Title>
               <Avatar src={reddit} size="large" /> Reddit Sentiment and
@@ -180,54 +197,13 @@ const Sentiment = () => {
             </Title>
 
             <Radar data={dataOne} options={options} />
-            {/* {
-      <List
-        grid={{ gutter: 16, column: 4 }}
-        dataSource={socialSentiment?.data?.reddit}
-        renderItem={(item) => (
-          <List.Item>
-            <Card title={item.atTime}>
-              <p>Sentiment Score: {item.score}</p>
-              <p>Positive Mention: {item.positiveMention}</p>
-              <p>Negative Mention: {item.negativeMention}</p>
-              <p>Positive Score: {item.positiveScore}</p>
-              <p>Negative Score: {item.negativeScore}</p>
-              <p>Average 7 Days: {item.avg_7_days}</p>
-              <p>Mentions: {item.mention}</p>
-            </Card>
-          </List.Item>
-        )}
-      />
-    }
-    <Title>
-      <Avatar src={twitter} size="large" /> Twitter Sentiment for: {stock}
-    </Title>
-    {
-      <List
-        grid={{ gutter: 16, column: 4 }}
-        dataSource={socialSentiment?.data?.twitter}
-        renderItem={(item) => (
-          <List.Item>
-            <Card title={item.atTime}>
-              <p>Sentiment Score: {item.score}</p>
-              <p>Positive Mention: {item.positiveMention}</p>
-              <p>Negative Mention: {item.negativeMention}</p>
-              <p>Positive Score: {item.positiveScore}</p>
-              <p>Negative Score: {item.negativeScore}</p>
-              <p>Average 7 Days: {item.avg_7_days}</p>
-              <p>Mentions: {item.mention}</p>
-            </Card>
-          </List.Item>
-        )}
-      />
-    } */}
           </div>
         </div>
       ) : (
         <>
           <Title>Purchase Premium Subscription to gain Access</Title>
         </>
-      )}
+      )} */}
     </>
   );
 };

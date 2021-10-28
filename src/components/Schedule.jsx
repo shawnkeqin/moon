@@ -135,6 +135,13 @@ const Schedule = () => {
       <Title>
         <FileDoneOutlined /> Earnings Schedule
       </Title>
+      <div id="inner">
+    <Typography>
+    Earnings season is the period when publicly traded companies release their most recent quarter’s financial information in a report called Form 10-Q. During this time, many companies also host conference calls to discuss the results and field questions from analysts on Wall Street.
+
+The information shared during earnings season can offer specific details about a company in addition to trends in various industries and the pace of economic growth more broadly. The data released is then compared with analyst estimates from before earnings season to determine how a company did versus how it was expected to do.
+        </Typography>
+        </div>
       Start Date:
       <Search
         placeholder="Search Start Date (YYYY-MM--DD) - Start Date Must Be Before End Date"
@@ -155,6 +162,13 @@ const Schedule = () => {
       <Title>
         <AlertOutlined /> IPO Schedule
       </Title>
+      <div id="inner">
+    <Typography>
+    An IPO is an initial public offering. In an IPO, a privately owned company lists its shares on a stock exchange, making them available for purchase by the general public.
+
+Many people think of IPOs as big money-making opportunities—high-profile companies grab headlines with huge share price gains when they go public. 
+        </Typography>
+        </div>
       Start Date:
       <Search
         placeholder="Search Start Date (YYYY-MM--DD) - Start Date Must Be Before End Date"

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
-import { Typography, Input } from "antd";
+import { Typography, Input, Tag } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 const { Search } = Input;
 const { Title } = Typography;
@@ -67,7 +67,35 @@ const RecommendationTrends = () => {
 
   return (
     <>
-      {hasUserPaid ? (
+ 
+        <div>
+          <Title>
+            <EyeOutlined /> Recommendation Trends for: <div style={{marginBottom: '4px'}}><Tag color="cyan">{stock}</Tag></div>
+          </Title>
+          <div id="inner">
+    <Typography>
+  Get Professional recommendation trends for a particular company collated and compile from various sources and displayed as one.
+        </Typography>
+        <br />
+        </div>
+          <Search
+            placeholder="Search Stock Ticker"
+            allowClear
+            enterButton="Search"
+            size="large"
+            onSearch={onSearch}
+          />
+          <div>
+            <Bar
+              data={data}
+              width={50}
+              height={10}
+              options={{ maintainAspectRatio: true }}
+            />
+          </div>
+        </div>
+      
+            {/* {hasUserPaid ? (
         <div>
           <Title>
             <EyeOutlined /> Recommendation Trends for: {stock}
@@ -95,7 +123,7 @@ const RecommendationTrends = () => {
         <>
           <Title>Purchase Premium Subscription to gain Access</Title>
         </>
-      )}
+      )} */}
     </>
   );
 };

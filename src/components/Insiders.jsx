@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useGetInsidersQuery } from "../services/insiderApi";
-import { Table, Typography, Input } from "antd";
+import { Table, Typography, Input, Tag} from "antd";
 import {
   UsergroupAddOutlined
 } from "@ant-design/icons";
@@ -64,14 +64,23 @@ const Insiders = () => {
   return (
     <>
       <Title><UsergroupAddOutlined /> Insider Transactions</Title>
+      <div id="inner">
+      <div style={{marginLeft: '300px'}}><Tag color="cyan">{ticker}</Tag></div>
+      <br />
+    <Typography>
+    Tracking insider transactions can be a valuable strategy. Knowing when corporate insiders are investing in their own company, or when multiple insiders are buying or selling the same stocks is useful information. After all, insiders often have better practical insights into a company’s outlook than the average investor.
+
+        </Typography>
+        <br/>
+        </div>
       <Search
-        placeholder="Search Stock"
+        placeholder="Search Stock Ticker"
         allowClear
         enterButton="Search"
         size="large"
         onSearch={onSearch}
       />
-      <Typography>Stock: {ticker}</Typography>
+     
       <Table dataSource={insiderTrxs} columns={columns} />;
     </>
   );
