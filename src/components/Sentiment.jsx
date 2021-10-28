@@ -2,12 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Radar, PolarArea } from "react-chartjs-2";
-import { Typography, Input, Timeline, List, Card, Avatar } from "antd";
-import {
-
-  RadarChartOutlined,
-
-} from "@ant-design/icons";
+import { Typography, Input, Avatar } from "antd";
+import { RadarChartOutlined } from "@ant-design/icons";
 import { useGetSentimentQuery } from "../services/sentimentApi";
 import twitter from "../images/twitter.png";
 import reddit from "../images/reddit.png";
@@ -146,19 +142,22 @@ const Sentiment = () => {
 
   return (
     <>
-    {hasUserPaid ? 
-  <div><Title><RadarChartOutlined /> Social Media Sentiment for: {stock} </Title>
-  <div>
-    <Search
-      placeholder="Search Stock"
-      allowClear
-      enterButton="Search"
-      size="large"
-      onSearch={onSearch}
-    />
-    <div style={timeLineStyle}>
-      <PolarArea data={dataTwo} />
-      {/* <List
+      {hasUserPaid ? (
+        <div>
+          <Title>
+            <RadarChartOutlined /> Social Media Sentiment for: {stock}{" "}
+          </Title>
+          <div>
+            <Search
+              placeholder="Search Stock"
+              allowClear
+              enterButton="Search"
+              size="large"
+              onSearch={onSearch}
+            />
+            <div style={timeLineStyle}>
+              <PolarArea data={dataTwo} />
+              {/* <List
         grid={{ gutter: 16, column: 4 }}
         dataSource={sentiment}
         renderItem={(item) => (
@@ -173,14 +172,15 @@ const Sentiment = () => {
           </List.Item>
         )}
       /> */}
-    </div>
-    <Title>
-      <Avatar src={reddit} size="large" /> Reddit Sentiment and
-      <Avatar src={twitter} size="large" /> Twitter Sentiment for: {stock}
-    </Title>
+            </div>
+            <Title>
+              <Avatar src={reddit} size="large" /> Reddit Sentiment and
+              <Avatar src={twitter} size="large" /> Twitter Sentiment for:{" "}
+              {stock}
+            </Title>
 
-    <Radar data={dataOne} options={options} />
-    {/* {
+            <Radar data={dataOne} options={options} />
+            {/* {
       <List
         grid={{ gutter: 16, column: 4 }}
         dataSource={socialSentiment?.data?.reddit}
@@ -221,11 +221,13 @@ const Sentiment = () => {
         )}
       />
     } */}
-  </div></div> : <>
-  <Title>Purchase Premium Subscription to gain Access</Title>
-  </>
-  }
-      
+          </div>
+        </div>
+      ) : (
+        <>
+          <Title>Purchase Premium Subscription to gain Access</Title>
+        </>
+      )}
     </>
   );
 };

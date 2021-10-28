@@ -461,3 +461,8 @@ h3 {
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 }
+
+.grid-container-2 {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
+}

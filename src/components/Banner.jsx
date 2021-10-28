@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import QueueAnim from "rc-queue-anim";
 import { LoginButton } from "./";
-import { Typography, Layout } from "antd";
+import { Typography } from "antd";
 import { Element } from "rc-scroll-anim";
 import BannerImage from "./BannerImage";
 import { assets } from "./data";
 
 const { Title } = Typography;
-const { Header } = Layout;
+
 const titleStyle = {
   marginTop: "230px",
 };
@@ -32,11 +32,6 @@ class Banner extends React.PureComponent {
         className={`${className}-wrapper page`}
         onChange={navToShadow}
       >
-        <Header>
-          <div>
-            <LoginButton />
-          </div>
-        </Header>
         <div class="grid-container">
           <div class="grid-child purple" style={titleStyle}>
             <Title>🚀 moon</Title>

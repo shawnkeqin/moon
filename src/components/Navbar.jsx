@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Menu, Typography, Avatar, Image, Modal,Tag } from "antd";
+import { Button, Menu, Typography, Avatar, Image, Modal, Tag } from "antd";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -8,26 +8,25 @@ import {
   RadarChartOutlined,
   BulbOutlined,
   StockOutlined,
-  FundOutlined,
   MenuOutlined,
   FileDoneOutlined,
   EyeOutlined,
   DollarOutlined,
   HeartTwoTone,
-  UserOutlined,
+  FormOutlined,
 } from "@ant-design/icons";
 import { useAuth0 } from "@auth0/auth0-react";
-import icon from "../images/moon.png";
+import icon from "../images/moon1.png";
 import StripeContainer from "./StripeContainer";
+const { Title } = Typography;
 
 const PayButton = {
-	width: 'calc(100% - 30px)',
-	backgroundColor: '#f6a4eb',
-	borderRadius: '4px',
-	cursor: 'pointer',
-	border: 'none',
-}
-
+  width: "calc(100% - 30px)",
+  backgroundColor: "#f6a4eb",
+  borderRadius: "4px",
+  cursor: "pointer",
+  border: "none",
+};
 
 const titleStyle = {
   marginTop: "15px",
@@ -38,11 +37,6 @@ const titleStyle = {
 const buttonStyle = {
   marginLeft: "10px",
   width: "100px",
-};
-
-const nameStyle = {
-  marginTop: "10px",
-  marginLeft: "10px",
 };
 
 const Navbar = () => {
@@ -87,8 +81,14 @@ const Navbar = () => {
       <div className="logo-container">
         <div style={titleStyle}>
           <Link to="/">
-            {/* <Avatar src={icon} size="large" /> */}
-            <Image src={icon} />
+            <div class="grid-container-2">
+              <div class="grid-child purple">
+                <Image src={icon} size width="90%" height="90%" />
+              </div>
+              <div class="grid-child green">
+                <Title italic="true">moon</Title>
+              </div>
+            </div>
           </Link>
         </div>
         <Button
@@ -113,7 +113,9 @@ const Navbar = () => {
             <Link to="/news">Crypto News</Link>
           </Menu.Item>
           <Menu.Item icon={<StockOutlined />}>
-            <Link to="/stocks" onClick={hasUserPaid ? null : showModal} >WSB Stocks Insights</Link>
+            <Link to="/stocks" onClick={hasUserPaid ? null : showModal}>
+              WSB Stocks Insights
+            </Link>
             <Button
               style={buttonStyle}
               type="primary"
@@ -147,7 +149,9 @@ const Navbar = () => {
             <Link to="/insiders">Insiders</Link>
           </Menu.Item>
           <Menu.Item icon={<RadarChartOutlined />}>
-            <Link to="/sentiment" onClick={hasUserPaid ? null : showModal}>Sentiment</Link>
+            <Link to="/sentiment" onClick={hasUserPaid ? null : showModal}>
+              Sentiment
+            </Link>
             <Button
               style={buttonStyle}
               type="primary"
@@ -167,15 +171,20 @@ const Navbar = () => {
               ) : (
                 <>
                   <h3>$10.00</h3>
-                  <Button style={PayButton}  onClick={() => setShowItem(true)}>
+                  <Button style={PayButton} onClick={() => setShowItem(true)}>
                     Purchase Subscription
                   </Button>
                 </>
               )}
             </Modal>
           </Menu.Item>
-          <Menu.Item icon={<EyeOutlined />} >
-            <Link to="/recommendation-trends" onClick={hasUserPaid ? null : showModal}>Recommendations</Link>
+          <Menu.Item icon={<EyeOutlined />}>
+            <Link
+              to="/recommendation-trends"
+              onClick={hasUserPaid ? null : showModal}
+            >
+              Recommendations
+            </Link>
             <Button
               style={buttonStyle}
               type="primary"
@@ -195,7 +204,7 @@ const Navbar = () => {
               ) : (
                 <>
                   <h3>$10.00</h3>
-                  <Button style={PayButton}  onClick={() => setShowItem(true)}>
+                  <Button style={PayButton} onClick={() => setShowItem(true)}>
                     Purchase Subscription
                   </Button>
                 </>
@@ -205,9 +214,12 @@ const Navbar = () => {
           <Menu.Item icon={<CalendarOutlined />}>
             <Link to="/schedule">Schedule</Link>
           </Menu.Item>
+          <Menu.Item icon={<FormOutlined />}>
+            <Link to="/schedule">Feedback</Link>
+          </Menu.Item>
         </Menu>
       )}
-     <Tag color="processing">
+      <Tag color="processing">
         Logged in as:
         <Avatar
           src="https://joeschmoe.io/api/v1/random"

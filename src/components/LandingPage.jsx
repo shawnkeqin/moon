@@ -1,11 +1,11 @@
 import React from "react";
-import DocumentTitle from "react-document-title";
 import { enquireScreen } from "enquire-js";
-
+import { Layout } from "antd";
+import LoginButton from "./LoginButton";
 import Banner from "./Banner";
 import Footer from "./Footer";
 import "./static/style";
-
+const { Header } = Layout;
 let isMobile = false;
 enquireScreen((b) => {
   isMobile = b;
@@ -29,12 +29,20 @@ class LandingPage extends React.PureComponent {
   };
   render() {
     return [
-      <Banner
-        key="banner"
-        isMobile={this.state.isMobile}
-        navToShadow={this.navToShadow}
-      />,
-      <Footer />,
+      <>
+        <Header>
+          <div>
+            <LoginButton />
+          </div>
+        </Header>
+        <Banner
+          key="banner"
+          isMobile={this.state.isMobile}
+          navToShadow={this.navToShadow}
+        />
+        ,
+        <Footer />
+      </>,
     ];
   }
 }

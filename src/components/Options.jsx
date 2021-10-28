@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Table, Col, Row, Typography, Select, Card, Input } from "antd";
-const { Title, Text } = Typography;
+import { Table, Typography } from "antd";
+const { Title } = Typography;
 const Options = () => {
   const [option, setOptions] = useState(undefined);
   var options = {
@@ -16,10 +16,10 @@ const Options = () => {
   useEffect(() => {
     axios
       .request(options)
-      .then(function (response) {
+      .then(function(response) {
         setOptions(response.data);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.error(error);
       });
   }, []);

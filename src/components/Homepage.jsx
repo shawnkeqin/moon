@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
-import millify from "millify";
 import { Typography, Statistic, Row, Col, Card, Avatar } from "antd";
-import { Link } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
 import moment from "moment";
-import { useGetCryptosQuery } from "../services/cryptoApi";
 import { useGetFearAndGreedQuery } from "../services/fearAndGreedApi";
-import { ArrowUpOutlined, ArrowDownOutlined,GlobalOutlined , ReadOutlined  } from "@ant-design/icons";
+import {
+  ArrowUpOutlined,
+  ArrowDownOutlined,
+  GlobalOutlined,
+  ReadOutlined,
+} from "@ant-design/icons";
 import Loader from "./Loader";
 const token = "c5q7oa2ad3iaqkueije0";
 
 const { Title, Text } = Typography;
 const newsTitle = {
-  marginTop: '40px',
-  marginLeft: '500px'
-}
-
+  marginTop: "40px",
+  marginLeft: "500px",
+};
 
 const Homepage = () => {
   // const { data, isFetching } = useGetCryptosQuery(10);
@@ -35,8 +36,6 @@ const Homepage = () => {
     }
 
     fetchData();
-  
-   
   }, []);
   const labels = [
     "One Year Ago",
@@ -94,7 +93,9 @@ const Homepage = () => {
   return (
     <>
       <div id="inner">
-        <Title><GlobalOutlined /> Market Fear and Greed Index</Title>
+        <Title>
+          <GlobalOutlined /> Market Fear and Greed Index
+        </Title>
         <Typography>
           The fear and greed index is a tool used by some investors to gauge the
           market. It is based on the premise that excessive fear can result in
@@ -292,49 +293,45 @@ const Homepage = () => {
           </Col>
         </Row>
         <div style={newsTitle}>
-          <Title className="home-title"><ReadOutlined /> Finance News</Title>
-         
+          <Title className="home-title">
+            <ReadOutlined /> Finance News
+          </Title>
         </div>
         <Row gutter={[24, 24]}>
-        {news?.data.map((news) => (
-          <Col xs={24} sm={12} lg={8} key={news.id}>
-            <Card hoverable className="news-card">
-              <a href={news.url} target="_blank" rel="noreferrer">
-                <div className="news-image-container">
-                  <Title className="news-title" level={4}>
-                    {news.headline}
-                  </Title>
-                  <img
-                    style={{ maxWidth: "200px", maxHeight: "100px" }}
-                    src={news.image}
-                    alt="news"
-                  />
-                </div>
-                <p>
-                  {news.description > 100
-                    ? `${news.description.substring(0, 100)}...`
-                    : news.description}
-                </p>
-                <div className="provider-container">
-                  <div>
-                    <Avatar
-                      src={
-                        news.image
-                      }
+          {news?.data.map((news) => (
+            <Col xs={24} sm={12} lg={8} key={news.id}>
+              <Card hoverable className="news-card">
+                <a href={news.url} target="_blank" rel="noreferrer">
+                  <div className="news-image-container">
+                    <Title className="news-title" level={4}>
+                      {news.headline}
+                    </Title>
+                    <img
+                      style={{ maxWidth: "200px", maxHeight: "100px" }}
+                      src={news.image}
                       alt="news"
                     />
-                    <Text className="provider-name">
-                      {news.source}
+                  </div>
+                  <p>
+                    {news.description > 100
+                      ? `${news.description.substring(0, 100)}...`
+                      : news.description}
+                  </p>
+                  <div className="provider-container">
+                    <div>
+                      <Avatar src={news.image} alt="news" />
+                      <Text className="provider-name">{news.source}</Text>
+                    </div>
+                    <Text>
+                      {moment(news.datetime)
+                        .startOf("ss")
+                        .fromNow()}
                     </Text>
                   </div>
-                  <Text>
-                    {moment(news.datetime).startOf("ss").fromNow()}
-                  </Text>
-                </div>
-              </a>
-            </Card>
-          </Col>
-        ))}
+                </a>
+              </Card>
+            </Col>
+          ))}
         </Row>
       </div>
       ,
